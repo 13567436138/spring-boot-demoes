@@ -46,7 +46,7 @@ public class MenuController {
 	
 	@RequestMapping("/list")
 	public String list(){
-		return "admins/system/menu.ftl";
+		return "admins/system/menu";
 	}
 	
 	@RequestMapping("/list/data")

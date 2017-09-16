@@ -45,7 +45,7 @@ public class MyBatisRedisCache implements Cache,Serializable{
 		CacheKey cacheKey=(CacheKey)key;
 		String [] keyAry=cacheKey.toString().split(":");
 		String myKey=keyAry[2];
-	    JedisUtils.setMapField(mybatis_cache_prefix+myKey, cacheKey.toString().getBytes(), value);
+	    JedisUtils.setMapField(mybatis_cache_prefix+myKey, cacheKey.toString(), value);
 	}
 	@Override
 	public Object getObject(Object key) {

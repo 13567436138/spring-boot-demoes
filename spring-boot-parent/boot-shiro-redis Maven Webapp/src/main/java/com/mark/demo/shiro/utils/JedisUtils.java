@@ -247,10 +247,10 @@ public class JedisUtils
     	return true;
     }
     
-    public static boolean setMapField(String key,byte[] field,Object value){
+    /*public static boolean setMapField(String key,byte[] field,Object value){
     	redisTemplate.opsForHash().put(key, field, value);
     	return true;
-    }
+    }*/
     
     /**
      * 获取map中的一个字段

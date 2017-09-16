@@ -10,6 +10,7 @@ import com.mark.demo.shiro.base.GenericEntity;
 *
 */
 public class User extends GenericEntity{
+	private static final long serialVersionUID = 6226302289545830472L;
 	private String userName;
 	private String password;
 	private String phone;
