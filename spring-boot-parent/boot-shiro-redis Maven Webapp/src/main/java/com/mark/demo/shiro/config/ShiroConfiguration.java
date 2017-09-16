@@ -16,6 +16,7 @@ import org.apache.shiro.web.mgt.CookieRememberMeManager;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.servlet.SimpleCookie;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -48,6 +49,9 @@ public class ShiroConfiguration {
     
     @Value("${cookie.maxage}")
     private String rememberCookieMaxAge;
+    
+    @Autowired
+    private SpringUtils springUtils;
 	
 	/**
      * ShiroFilterFactoryBean 处理拦截资源文件问题。
@@ -55,7 +59,7 @@ public class ShiroConfiguration {
      * 初始化ShiroFilterFactoryBean的时候需要注入：SecurityManager
      */
     @Bean
-    public ShiroFilterFactoryBean shirFilter(SecurityManager securityManager) {
+    public ShiroFilterFactoryBean shirFilter() {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
 
         // 必须设置 SecurityManager
@@ -91,7 +95,7 @@ public class ShiroConfiguration {
         MysqlRealm myRealm = new MysqlRealm();
         myRealm.setCredentialsMatcher(new UserCredentialsMatcher());
         myRealm.setSessionDAO(sessionDao());
-        myRealm.setUserMapper(SpringUtils.getBean("userMapper"));
+        myRealm.setUserMapper(springUtils.getBean("userMapper"));
         
         securityManager.setRealm(myRealm);
         securityManager.setSessionManager(sessionManager());
@@ -140,7 +144,7 @@ public class ShiroConfiguration {
         return sessionManager;
     }
 
-    @Bean
+    @Bean(name="redisCacheManager")
     public RedisCacheManager cacheManager() {
     	RedisCacheManager redisCacheManager = new RedisCacheManager();
         return redisCacheManager;

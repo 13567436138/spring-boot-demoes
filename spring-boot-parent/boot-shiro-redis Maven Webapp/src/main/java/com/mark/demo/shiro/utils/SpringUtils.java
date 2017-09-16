@@ -5,12 +5,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.stereotype.Component;
 
+@Component
 public class SpringUtils implements ApplicationContextAware, DisposableBean
 {
     private static final Logger logger = LoggerFactory.getLogger(SpringUtils.class);
     
-    private SpringUtils()
+    public SpringUtils()
     {
     }
     
@@ -19,7 +21,7 @@ public class SpringUtils implements ApplicationContextAware, DisposableBean
     /**
      * 取得存储在静态变量中的ApplicationContext.
      */
-    public static ApplicationContext getApplicationContext()
+    public  ApplicationContext getApplicationContext()
     {
         return applicationContext;
     }
@@ -27,7 +29,7 @@ public class SpringUtils implements ApplicationContextAware, DisposableBean
     @Override
     public void destroy() throws Exception
     {
-        SpringUtils.clearHolder();
+        clearHolder();
     }
     
     /**
@@ -54,13 +56,13 @@ public class SpringUtils implements ApplicationContextAware, DisposableBean
     @Override
     public void setApplicationContext(ApplicationContext applicationContext)
     {
-        SpringUtils.applicationContext = applicationContext; 
+        this.applicationContext = applicationContext; 
     }
     
     /**
      * 清除SpringContextHolder中的ApplicationContext为Null.
      */
-    public static void clearHolder()
+    public  void clearHolder()
     {
          applicationContext = null;
     }

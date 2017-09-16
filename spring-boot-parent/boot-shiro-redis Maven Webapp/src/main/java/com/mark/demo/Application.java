@@ -1,4 +1,4 @@
-package com.mark.demo.shiro;
+package com.mark.demo;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
