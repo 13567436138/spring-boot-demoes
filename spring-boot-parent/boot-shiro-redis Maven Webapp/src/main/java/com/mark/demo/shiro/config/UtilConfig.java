@@ -3,8 +3,10 @@ package com.mark.demo.shiro.config;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.core.RedisTemplate;
 
 import com.mark.demo.shiro.session.RedisSessionManager;
+import com.mark.demo.shiro.utils.JedisUtils;
 import com.mark.demo.shiro.utils.SpringUtils;
 
 /*
@@ -28,4 +30,11 @@ public class UtilConfig {
 		RedisSessionManager manager=new RedisSessionManager();
 		return manager;
 	} 
+	
+	@Bean
+	public JedisUtils jedisUtil(RedisTemplate<String, Object> redisTemplate){
+		JedisUtils jedisUtil=new JedisUtils();
+		jedisUtil.setRedisTemplate(redisTemplate);
+		return jedisUtil;
+	}
 }

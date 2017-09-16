@@ -68,10 +68,10 @@ public class RedisCache<K, V> implements Cache<K, V>
     public Collection<V> values()
     {
     	Collection<V> col=new ArrayList<V>();
-        List<byte[]>objects=JedisUtils.getMapFieldValues(cacheKeyName);
+        List<Object>objects=JedisUtils.getMapFieldValues(cacheKeyName);
         for(int i=0;i<objects.size();i++){
-        	byte[] object=objects.get(i);
-        	col.add(((V)ObjectUtils.unserialize(object)));
+        	Object object=objects.get(i);
+        	col.add(((V)object));
         }
         return col;
     }
