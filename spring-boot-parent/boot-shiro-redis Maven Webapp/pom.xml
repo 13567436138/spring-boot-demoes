@@ -10,7 +10,10 @@
   <packaging>war</packaging>
   <name>boot-shiro-redis Maven Webapp</name>
   <url>http://maven.apache.org</url>
-  
+  <properties>
+  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  	<resource.delimiter>$</resource.delimiter>
+  </properties>
   <dependencies>
   	<dependency>
   		<groupId>org.springframework.boot</groupId>  
@@ -24,6 +27,15 @@
         <groupId>org.springframework.boot</groupId>  
         <artifactId>spring-boot-starter-data-redis</artifactId>  
     </dependency> 
+    <dependency>     
+        <groupId>org.springframework.boot</groupId>    
+        <artifactId>spring-boot-starter-freemarker</artifactId>  
+    </dependency>  
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-devtools</artifactId>
+        <optional>true</optional> <!-- 表示依赖不会传递 -->
+    </dependency>
   	<dependency>
 		<groupId>org.apache.shiro</groupId>
 		<artifactId>shiro-core</artifactId>
@@ -72,9 +84,26 @@
 	    <groupId>commons-validator</groupId>
 	    <artifactId>commons-validator</artifactId>
 	</dependency>
+	<dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+    </dependency>
+    <dependency>
+	    <groupId>com.alibaba</groupId>
+	    <artifactId>druid</artifactId>
+	</dependency>
   </dependencies>
   
   <build>
     <finalName>boot-shiro-redis</finalName>
+    <plugins>
+    	<plugin>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-maven-plugin</artifactId>
+	        <configuration>
+	            <fork>true</fork> <!-- 如果没有该配置，devtools不会生效 -->
+	        </configuration>
+	    </plugin>
+    </plugins>
   </build>
 </project>

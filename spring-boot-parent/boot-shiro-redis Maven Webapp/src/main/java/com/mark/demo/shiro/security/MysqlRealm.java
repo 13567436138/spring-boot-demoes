@@ -24,7 +24,7 @@ public class MysqlRealm extends AuthorizingRealm {
 	private UserMapper userMapper;
 	private CustomSessionDAO sessionDAO;
 
-	private static PropertiesLoader props = new PropertiesLoader("cookie.properties");
+	private static PropertiesLoader props = new PropertiesLoader("application.properties");
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 		String name = getName();
