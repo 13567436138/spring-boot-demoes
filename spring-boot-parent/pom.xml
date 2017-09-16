@@ -13,6 +13,10 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-
+	
+  <modules>
+  		<module>boot-shiro-memcached Maven Webapp</module>
+  		<module>boot-shiro-redis Maven Webapp</module>
+  </modules>
   
 </project>
