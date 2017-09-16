@@ -263,10 +263,10 @@ public class JedisUtils
         return value;
     }
     
-    public static Object getMapFiled(String key,byte[] field){
+   /* public static Object getMapFiled(String key,byte[] field){
     	Object value=redisTemplate.opsForHash().get(key, field);
         return value;
-    }
+    }*/
     /**
      * 获取Map缓存
      * @param key 键

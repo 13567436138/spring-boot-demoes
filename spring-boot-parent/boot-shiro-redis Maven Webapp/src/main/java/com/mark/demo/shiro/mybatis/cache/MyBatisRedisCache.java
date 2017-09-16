@@ -52,7 +52,7 @@ public class MyBatisRedisCache implements Cache,Serializable{
 		CacheKey cacheKey=(CacheKey)key;
 		String [] keyAry=cacheKey.toString().split(":");
 		String myKey=keyAry[2];
-	    return JedisUtils.getMapFiled(mybatis_cache_prefix+myKey, cacheKey.toString().getBytes());
+	    return JedisUtils.getMapFiled(mybatis_cache_prefix+myKey, cacheKey.toString());
 	    
 	}
 
@@ -61,7 +61,7 @@ public class MyBatisRedisCache implements Cache,Serializable{
 		CacheKey cacheKey=(CacheKey)key;
 		String [] keyAry=cacheKey.toString().split(":");
 		String myKey=keyAry[2];
-	    Object ret=JedisUtils.getMapFiled(mybatis_cache_prefix+myKey, ObjectUtils.serialize(key));
+	    Object ret=JedisUtils.getMapFiled(mybatis_cache_prefix+myKey, String.valueOf(key));
 		JedisUtils.removeMapField(mybatis_cache_prefix+myKey, ObjectUtils.serialize(key));
 		return ret;
 	}

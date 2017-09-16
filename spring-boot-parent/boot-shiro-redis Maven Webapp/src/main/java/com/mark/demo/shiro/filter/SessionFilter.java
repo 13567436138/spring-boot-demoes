@@ -15,7 +15,7 @@ import com.mark.demo.shiro.utils.CookieUtils;
 
 public class SessionFilter extends OncePerRequestFilter
 {
-    public static final String SESSION_ID_NAME = "shiro-demo";
+    public static final String SESSION_ID_NAME = "JSESSIONID";
     
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException

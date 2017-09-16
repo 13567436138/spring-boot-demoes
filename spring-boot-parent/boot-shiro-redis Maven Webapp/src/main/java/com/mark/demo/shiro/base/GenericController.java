@@ -151,7 +151,7 @@ public abstract class GenericController
                 return value != null ? value.toString() : "";
             }
         });
-        binder.setAutoGrowCollectionLimit(Integer.MAX_VALUE);
+        //binder.setAutoGrowCollectionLimit(Integer.MAX_VALUE);
     }
     
     /**

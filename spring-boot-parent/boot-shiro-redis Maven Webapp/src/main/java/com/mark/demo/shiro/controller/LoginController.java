@@ -65,7 +65,7 @@ public class LoginController extends GenericController
           
             model.addAttribute("redirect", URLDecoder.decode(redirect, CharsetConst.CHARSET_UT));
         }
-        return "common/login.ftl";
+        return "common/login";
     }
     
     
