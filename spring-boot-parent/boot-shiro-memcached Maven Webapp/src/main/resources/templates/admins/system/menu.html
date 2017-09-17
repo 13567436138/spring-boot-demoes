@@ -1,4 +1,13 @@
-#set($layout="layout/common_page_layout.vm")
+<!DOCTYPE html>  
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head th:include="/common/common::header" > 
+</head>  
+
+<body class="easyui-layout" >
+    <form id="_csrf-form" cssStyle="display: none">
+		<input type="hidden" name="csrfToken" th:value="${#httpServletRequest.getAttribute('csrfToken')}" />
+	</form>
+	
 	<div  region="center" >
 		<div id='dataList'>
 			<div id="tb" style="padding:5px;height:auto">
@@ -103,4 +112,6 @@
 	    })
 	});
 	</script>
- 
+	
+  </body>
+</html>

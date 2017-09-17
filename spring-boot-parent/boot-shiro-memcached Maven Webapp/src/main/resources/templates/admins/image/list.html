@@ -1,4 +1,13 @@
-#set($layout="layout/common_page_layout.vm")
+<!DOCTYPE html>  
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head th:include="/common/common::header" > 
+</head>  
+
+<body class="easyui-layout" >
+    <form id="_csrf-form" cssStyle="display: none">
+		<input type="hidden" name="csrfToken" th:value="${#httpServletRequest.getAttribute('csrfToken')}" />
+	</form>
+	
 	<div  region="center" >
 		<div id='dataList'>
 			<div id="tb" style="padding:5px;height:auto">
@@ -21,7 +30,7 @@
 	
 	<div style="visibility:hidden" >
 		<div id="addwindow"  title="添加" style="width:600px;height:350px;padding:10px">
-			<form id='addForm' action="" enctype="multipart/form-data" method="post"s>
+			<form id='addForm' action="" enctype="multipart/form-data" method="post">
 				<table>
 						<tr>
 							<td>请选择图片:</td>
@@ -33,6 +42,7 @@
 		</div>
 	</div>
 	<script type="text/javascript"  charset="UTF-8">
+	/*<![CDATA[*/
 	var path=document.getElementById("base").href;
    var searchUrl = path+"/image/list/data";
    var updateUrl = path+"/departments/update.do";
@@ -88,5 +98,8 @@
 	        displayMsg: '当前显示 {from} - {to} 条记录   共 {total} 条记录'
 	    })
 	});
+	/*]]>*/
 	</script>
  
+  </body>
+</html>
