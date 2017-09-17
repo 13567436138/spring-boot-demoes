@@ -29,7 +29,7 @@
     	update menu set menuName=#{menuName} where menuId=#{id}
     </update>
     
-    <select id="findList" parameterType="Menu" resultMap="menuWithParentMap">
+    <select id="findList" parameterType="Menu" resultMap="menuWithParentMap" useCache="true">
     	select 
     		a.*,
     		p.menuName as p_menuName,

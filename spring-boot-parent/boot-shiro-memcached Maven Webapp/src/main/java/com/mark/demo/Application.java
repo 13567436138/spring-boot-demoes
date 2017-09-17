@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.github.tobato.fastdfs.FdfsClientConfig;
 
@@ -17,6 +18,7 @@ import com.github.tobato.fastdfs.FdfsClientConfig;
 */
 @EnableAutoConfiguration
 @SpringBootApplication
+@EnableTransactionManagement
 @ComponentScan(basePackages={"com.mark.demo.shiro_memched","com.github.tobato.fastdfs"})
 @ServletComponentScan
 @MapperScan("com.mark.demo.shiro_memched.mapper")

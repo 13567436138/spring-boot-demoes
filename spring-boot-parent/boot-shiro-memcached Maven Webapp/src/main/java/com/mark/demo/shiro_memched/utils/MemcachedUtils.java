@@ -71,10 +71,10 @@ public class MemcachedUtils {
     	Object groupObj=get(groupKey);
     	if(groupObj==null){
     		groupObj=new HashSet<String>();
-    		((HashSet)groupObj).add(fieldKey);
+    		((HashSet)groupObj).add(resolveKey(fieldKey));
     		set(groupKey, groupObj);
     	}else{
-    		((HashSet<String>)groupObj).add(fieldKey);
+    		((HashSet<String>)groupObj).add(resolveKey(fieldKey));
     		set(groupKey,groupObj);
     	}
     	return set(fieldKey,value);
@@ -85,7 +85,7 @@ public class MemcachedUtils {
      * @return
      */
     public static int getGroupLen(String groupKey){
-    	Set<String> fields=(Set<String>)MemcachedUtils.get(groupKey);
+    	Set<String> fields=(Set<String>)get(groupKey);
     	if(fields==null){
     		return 0;
     	}else{
@@ -118,7 +118,7 @@ public class MemcachedUtils {
     public static boolean delGroupField(String groupKey,String filedKey){
     	Object groupObj=get(groupKey);
     	Set<String> groupFields=(HashSet<String>)groupObj;
-    	groupFields.remove(filedKey);
+    	groupFields.remove(resolveKey(filedKey));
     	set(groupKey,groupFields);
     	return  delete(filedKey);
     }
@@ -132,7 +132,7 @@ public class MemcachedUtils {
     	boolean flag = false;  
     	try  
         {  
-            flag = memcachedClient.set(key, expire, memcachedClient.get(key));
+            flag = memcachedClient.set(resolveKey(key), expire, memcachedClient.get(resolveKey(key)));
         }  
         catch (Exception e)  
         {  
@@ -156,7 +156,7 @@ public class MemcachedUtils {
         boolean flag = false;  
         try  
         {  
-            flag = memcachedClient.set(key, expire, value);
+            flag = memcachedClient.set(resolveKey(key), expire, value);
         }  
         catch (Exception e)  
         {  logger.error(e.getMessage());
@@ -210,7 +210,7 @@ public class MemcachedUtils {
         boolean flag = false;  
         try  
         {  
-            flag = memcachedClient.add(key,expire, value);  
+            flag = memcachedClient.add(resolveKey(key),expire, value);  
         }  
         catch (Exception e)  
         {  
@@ -265,7 +265,7 @@ public class MemcachedUtils {
         boolean flag = false;  
         try  
         {  
-            flag = memcachedClient.replace(key,expire, value);  
+            flag = memcachedClient.replace(resolveKey(key),expire, value);  
         }  
         catch (Exception e)  
         {  
@@ -286,7 +286,7 @@ public class MemcachedUtils {
         Object obj = null;  
         try  
         {  
-            obj = memcachedClient.get(key);  
+            obj = memcachedClient.get(resolveKey(key));  
         }  
         catch (Exception e)  
         {  
@@ -335,7 +335,7 @@ public class MemcachedUtils {
         boolean flag = false;  
         try  
         {  
-            flag = memcachedClient.delete(key, expire);  
+            flag = memcachedClient.delete(resolveKey(key), expire);  
         }  
         catch (Exception e)  
         {  
@@ -363,6 +363,17 @@ public class MemcachedUtils {
         }  
         return flag;  
     }  
+    
+    
+    /**
+     * 处理key
+     * @param key
+     * @return
+     */
+    public static String resolveKey(String key){
+    	key=key.replaceAll(" ", "");
+    	return key;
+    }
   
     /** 
      * 返回异常栈信息，String类型 

@@ -3,6 +3,7 @@ package com.mark.demo.shiro_memched.base;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 
 public abstract class GenericServiceImpl<T extends GenericEntity> implements GenericService <T> {
@@ -21,6 +22,7 @@ public abstract class GenericServiceImpl<T extends GenericEntity> implements Gen
      * @param entity
      * @return
      */
+    @Transactional(readOnly=true)
     public List<T> findList(T entity) {
         return dao.findList(entity);
     }
@@ -31,6 +33,7 @@ public abstract class GenericServiceImpl<T extends GenericEntity> implements Gen
      * @param refrencdId
      * @author chenjp
      */
+    @Transactional(readOnly=false)
     public int delete(String refrencdId) {
         return dao.delete(refrencdId);
     }
@@ -41,6 +44,7 @@ public abstract class GenericServiceImpl<T extends GenericEntity> implements Gen
      * @param entity
      * @return
      */
+    @Transactional(readOnly=false)
     public int insert(T entity) {
         return dao.insert(entity);
     }
@@ -52,6 +56,7 @@ public abstract class GenericServiceImpl<T extends GenericEntity> implements Gen
      * @return
      * @see public int delete(T entity)
      */
+    @Transactional(readOnly=false)
     public  int deleteByPrimaryKey(String refrenceid) {
         return dao.deleteByPrimaryKey(refrenceid);
     }
@@ -63,6 +68,7 @@ public abstract class GenericServiceImpl<T extends GenericEntity> implements Gen
      * @param entity
      * @return
      */
+    @Transactional(readOnly=true)
     public PaginateResult<T> findPage(Pagination page, T entity) {
         entity.setPagination(page);
         PaginateResult<T> pageResult = new PaginateResult<T>(page, dao.findList(entity));

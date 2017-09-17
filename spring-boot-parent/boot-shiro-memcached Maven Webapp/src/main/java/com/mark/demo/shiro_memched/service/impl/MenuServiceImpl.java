@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.mark.demo.shiro_memched.base.GenericServiceImpl;
 import com.mark.demo.shiro_memched.entity.Menu;
@@ -16,6 +18,7 @@ import com.mark.demo.shiro_memched.service.MenuService;
 *
 */
 @Service
+@Transactional(readOnly=true)
 public class MenuServiceImpl extends GenericServiceImpl<Menu> implements MenuService {
 
 	private MenuMapper menuMapper;
@@ -37,6 +40,7 @@ public class MenuServiceImpl extends GenericServiceImpl<Menu> implements MenuSer
 	}
 
 	@Override
+	@Transactional(readOnly=false, propagation = Propagation.REQUIRES_NEW)
 	public boolean updateMenu(Menu menu) {
 		menuMapper.updateMenu(menu);
 		return true;
