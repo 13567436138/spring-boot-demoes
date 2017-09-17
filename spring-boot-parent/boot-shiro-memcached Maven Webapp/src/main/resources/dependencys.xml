@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dependencies>
+    <statements>
+        <!-- 角色授权后刷新角色缓存 -->
+        <statement id="com.mark.demo.shiro_memched.mapper.MenuMapper.updateMenu">
+        	<observer id="com.mark.demo.shiro_memched.mapper.UserMapper.getMenuTopLever"/>
+        </statement>
+		<statement id="com.mark.demo.shiro_memched.mapper.FastDFSFileMapper.insert">
+			<observer id="com.mark.demo.shiro_memched.mapper.ImageMapper.findList" />
+        </statement>
+    </statements>
+</dependencies>

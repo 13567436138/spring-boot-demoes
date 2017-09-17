@@ -219,6 +219,7 @@
   				<activeByDefault>true</activeByDefault>
   			</activation>
   			<properties>
+  				<p.memcache.master.hosts>192.168.198.128:11211</p.memcache.master.hosts>
   				<p.redis.master.host>redis</p.redis.master.host>
   				<p.redis.master.port>7000</p.redis.master.port>
   				<p.redis.master.pass>none</p.redis.master.pass>

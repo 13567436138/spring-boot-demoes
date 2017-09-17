@@ -8,6 +8,7 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
 import com.mark.demo.shiro_memched.interceptor.CSRFTokenManager;
@@ -18,6 +19,7 @@ import com.mark.demo.shiro_memched.utils.SpringUtils;
 *2017年9月13日
 *
 */
+@WebFilter(filterName="csrf",urlPatterns="/*" )
 public class CSRFGenerateFilter implements Filter {
 
 	@Override

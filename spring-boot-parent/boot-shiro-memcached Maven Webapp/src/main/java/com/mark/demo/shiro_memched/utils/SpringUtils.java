@@ -10,10 +10,7 @@ public class SpringUtils implements ApplicationContextAware, DisposableBean
 {
     private static final Logger logger = LoggerFactory.getLogger(SpringUtils.class);
     
-    private SpringUtils()
-    {
-    }
-    
+   
     private static ApplicationContext applicationContext = null;
     
     /**

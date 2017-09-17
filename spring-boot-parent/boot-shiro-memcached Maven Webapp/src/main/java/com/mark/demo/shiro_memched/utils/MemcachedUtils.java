@@ -26,14 +26,10 @@ import net.rubyeye.xmemcached.XMemcachedClient;;
 public class MemcachedUtils {
 	private static final Logger logger = LoggerFactory.getLogger(MemcachedUtils.class);  
     private static XMemcachedClient memcachedClient;  
-    
-    static{
-    	memcachedClient=SpringUtils.getBean("xmemcachedClient");
+   
+    public static void setClient(XMemcachedClient client){
+    	memcachedClient=client;
     }
-  
-    private MemcachedUtils()  
-    {  
-    }  
   
     /** 
      * 向缓存添加新的键值对。如果键已经存在，则之前的值将被替换。 
