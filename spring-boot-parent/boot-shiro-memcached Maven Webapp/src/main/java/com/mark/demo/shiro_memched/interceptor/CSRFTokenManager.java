@@ -17,11 +17,11 @@ public final class CSRFTokenManager
      */
     public static final String  CSRF_TOKEN_NAME = "csrfToken";
     
-    private MemcachedSessionManager redisSessionManager;
+    private MemcachedSessionManager memcachedSessionManager;
     
-    public void setRedisSessionManager(MemcachedSessionManager redisSessionManager)
+    public void setMemcachedSessionManager(MemcachedSessionManager memcachedSessionManager)
     {
-        this.redisSessionManager = redisSessionManager;
+        this.memcachedSessionManager = memcachedSessionManager;
     }
     
     public String getTokenForRequest(HttpServletRequest request)
@@ -29,16 +29,16 @@ public final class CSRFTokenManager
         String token;
         synchronized (request)
         {
-            token = redisSessionManager.getString(request, MemcachedSessionManager.SessionKey.CSRF_KEY);
+            token = memcachedSessionManager.getString(request, MemcachedSessionManager.SessionKey.CSRF_KEY);
             if (StringUtils.isNotBlank(token))
             {// 更新会话时间
-                redisSessionManager.expire(request, MemcachedSessionManager.SessionKey.CSRF_KEY);
+                memcachedSessionManager.expire(request, MemcachedSessionManager.SessionKey.CSRF_KEY);
             }
             else
             {
                 token = IdGen.uuid();
                 LOGGER.info("查找不到 csrf token, 重新生成; token:" + token);
-                redisSessionManager.put(request, MemcachedSessionManager.SessionKey.CSRF_KEY, token);
+                memcachedSessionManager.put(request, MemcachedSessionManager.SessionKey.CSRF_KEY, token);
             }
         }
         return token;

@@ -26,8 +26,8 @@ public class UtilConfig {
 		return springUtils;
 	}
 	
-	@Bean
-	public MemcachedSessionManager redisSessionManager(){
+	@Bean("memcachedSessionManager")
+	public MemcachedSessionManager memcachedSessionManager(){
 		MemcachedSessionManager manager=new MemcachedSessionManager();
 		return manager;
 	} 
