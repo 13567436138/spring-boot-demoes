@@ -19,11 +19,11 @@ import net.rubyeye.xmemcached.utils.XMemcachedClientFactoryBean;
 */
 @Configuration
 public class MemcachedConfig {
-	@Value("${spring.datasource.url}")
+	@Value("${memcached.servers}")
 	private String servers;
 	
 	@Bean("xmemcachedClient")
-	public XMemcachedClientFactoryBean xmemcachedClientFactoryBean(){
+	public XMemcachedClientFactoryBean xmemcachedClient(){
 		XMemcachedClientFactoryBean bean=new XMemcachedClientFactoryBean();
 		bean.setServers(servers);
 		List<Integer> weights=new ArrayList<Integer>();

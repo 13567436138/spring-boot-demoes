@@ -33,9 +33,9 @@ public class UtilConfig {
 	} 
 	
 	@Bean
-	public MemcachedUtils jedisUtil(XMemcachedClient xmemcachedClient){
+	public MemcachedUtils memcachedUtil(){
 		MemcachedUtils memcachedUtils=new MemcachedUtils();
-		memcachedUtils.setClient(xmemcachedClient);
+		memcachedUtils.setClient(SpringUtils.getBean("xmemcachedClient"));
 		return memcachedUtils;
 	}
 }
