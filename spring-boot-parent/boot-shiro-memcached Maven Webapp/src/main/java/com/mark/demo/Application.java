@@ -15,10 +15,9 @@ import com.github.tobato.fastdfs.FdfsClientConfig;
 *2017年9月16日
 *
 */
-@Import(FdfsClientConfig.class)
 @EnableAutoConfiguration
 @SpringBootApplication
-@ComponentScan()
+@ComponentScan(basePackages={"com.mark.demo.shiro_memched","com.github.tobato.fastdfs"})
 @ServletComponentScan
 @MapperScan("com.mark.demo.shiro_memched.mapper")
 public class Application {
