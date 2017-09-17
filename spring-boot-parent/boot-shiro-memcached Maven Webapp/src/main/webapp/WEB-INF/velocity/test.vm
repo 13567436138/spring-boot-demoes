@@ -1,0 +1,13 @@
+<html>
+<head>
+    <title>Spring MVC and Velocity</title>
+</head>
+<body>
+<h1>Spring MVC and Velocity</h1>
+
+    ${hello}
+
+<hr />
+Copyright &copy 2014 lm
+</body>
+</html>

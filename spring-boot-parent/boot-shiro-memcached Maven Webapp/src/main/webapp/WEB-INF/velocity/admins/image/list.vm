@@ -1,0 +1,92 @@
+#set($layout="layout/common_page_layout.vm")
+	<div  region="center" >
+		<div id='dataList'>
+			<div id="tb" style="padding:5px;height:auto">
+        		<div style="margin-bottom:5px">
+        			<a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="showAddwindow({title:'新增'})">新增</a>|
+        			<!--<a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="showUpdate({title:'修改',readonlyFields:['departmentcode']});">修改</a>|-->
+        			<a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="delRowData({id:'fileId'});">删除</a>
+        		</div>
+        		<div>
+        			<form  id='searchForm' action="" method="post">
+        				创建时间:
+        				<input type="text" id="menuName" name="menuName"/>
+        				<input type="text" id="pmenuName" name="parent.menuName"/>
+        				<input type="button" onclick="loadList(1);" value="查询"/>
+        			</form>
+        		</div>
+        	</div>
+		</div>
+	</div>
+	
+	<div style="visibility:hidden" >
+		<div id="addwindow"  title="添加" style="width:600px;height:350px;padding:10px">
+			<form id='addForm' action="" enctype="multipart/form-data" method="post"s>
+				<table>
+						<tr>
+							<td>请选择图片:</td>
+							<td><input type="file" name="file"/></td>
+						</tr>
+						
+				</table>
+			</form>
+		</div>
+	</div>
+	<script type="text/javascript"  charset="UTF-8">
+	var path=document.getElementById("base").href;
+   var searchUrl = path+"/image/list/data";
+   var updateUrl = path+"/departments/update.do";
+   var insertUrl = path+"/admins/file//upload";
+   var deleteUrl = path+"/departments/delete.do";
+	$(function() {
+	    $('#dataList').datagrid({  
+	        title:'列表',  
+	        iconCls:'icon-edit',//图标  
+	        //width: 700,  
+	        height: 'auto',  
+	        nowrap: false,  
+	        striped: true,  
+	        border: true,  
+	        collapsible:false,//是否可折叠的  
+	        fit: true,//自动大小  
+	        url:'#',  
+	        remoteSort:false,   
+	        singleSelect:true,//是否单选  
+	        pagination:true,//分页控件  
+	        rownumbers:true,//行号  
+	        url:searchUrl, 
+	        toolbar:'#tb',
+	        columns:[[   
+                   		{field:'image',title:'缩略图',width:150,align:'center',formatter:function(cellvalue, rowObject,index){
+                   			return "<image src='"+path+"/admins/file/show?path="+rowObject.path+"' with='100px' height='100px'/>";
+                   		}},
+                   		{field:'name',title:'图片名称',width:150,align:'center'},
+                   		{field:'ext',title:'图片后缀',width:100,align:'center'},
+                   		{field:'path',title:'路径',width:400,align:'center',formatter:function(cellvalue, options, rowObject){
+                   			return cellvalue;
+                   		}},
+                   		{field:'length',title:'大小',width:100,align:'center'},
+                   		{field:'id',title:'id',width:100,align:'center'}
+	        ]],
+	        
+	         onBeforeLoad: function (params) {
+			      params.pageSize = params.rows
+			      params.currentPage = params.page
+			      delete params.rows
+			      delete params.page
+			 }
+	        
+	    });  
+	
+	    //设置分页控件  
+	    var p = $('#dataList').datagrid('getPager');  
+	    $(p).pagination({  
+	        pageSize: 10,//每页显示的记录条数，默认为10  
+	        pageList: [10,20,30],//可以设置每页记录条数的列表  
+	        beforePageText: '第',//页数文本框前显示的汉字  
+	        afterPageText: '页    共 {pages} 页',  
+	        displayMsg: '当前显示 {from} - {to} 条记录   共 {total} 条记录'
+	    })
+	});
+	</script>
+ 

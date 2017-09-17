@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mark.demo.shiro_memched.mapper.FastDFSFileMapper">
+	<cache eviction="LRU" type="com.mark.demo.shiro_memched.mybatis.cache.MybatisMemcacheCache" ></cache>
+    
+    <insert id="insert" parameterType="FastDFSFile">
+    	insert into dfsfile(`path`,`name`,ext,`length`,author,`type`)
+    	values(
+    		#{path},
+    		#{name},
+    		#{ext},
+    		#{length},
+    		#{author},
+    		#{type}
+    	)
+    </insert>
+</mapper>
+

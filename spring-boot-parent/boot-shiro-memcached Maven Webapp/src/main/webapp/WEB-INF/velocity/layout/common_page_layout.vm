@@ -1,0 +1,12 @@
+#parse("default/header.vm")
+#set($csrfToken=$request.getAttribute('csrfToken'))
+  
+  <body class="easyui-layout" >
+    <form id="_csrf-form" cssStyle="display: none">
+		<input type="hidden" name="csrfToken" value="$csrfToken" />
+	</form>
+	
+	$screen_content
+	
+  </body>
+</html>
