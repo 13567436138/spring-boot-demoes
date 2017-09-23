@@ -18,6 +18,7 @@
   <modules>
   		<module>boot-shiro-memcached Maven Webapp</module>
   		<module>boot-shiro-redis Maven Webapp</module>
+  		<module>boot-security-demo Maven Webapp</module>
   </modules>
   
   <dependencyManagement>
