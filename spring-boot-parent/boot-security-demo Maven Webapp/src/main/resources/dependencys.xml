@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dependencies>
+    <statements>
+        <!-- 角色授权后刷新角色缓存 -->
+        <statement id="com.mark.demo.shiro.mapper.MenuMapper.updateMenu">
+        	<observer id="com.mark.demo.shiro.mapper.UserMapper.getMenuTopLever"/>
+        </statement>
+
+    </statements>
+</dependencies>
