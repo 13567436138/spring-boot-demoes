@@ -12,12 +12,17 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.mark.demo.security.mapper.UserMapper;
 import com.mark.demo.security.security.CustomAccessDecisionManager;
 import com.mark.demo.security.security.CustomFilterSecurityInterceptor;
 import com.mark.demo.security.security.CustomLogoutSuccessHandler;
 import com.mark.demo.security.security.CustomSavedRequestAwareAuthenticationSuccessHandler;
 import com.mark.demo.security.security.CustomUserDetailsService;
+import com.mark.demo.security.security.CustomUsernamePasswordAuthenticationFilter;
+import com.mark.demo.security.session.RedisSessionManager;
 
 /*
 *hxp(hxpwangyi@126.com)
@@ -27,7 +32,10 @@ import com.mark.demo.security.security.CustomUserDetailsService;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-	
+	@Autowired
+    private UserMapper userMapper;
+	@Autowired
+	private RedisSessionManager redisSessionManager;
 	@Autowired
 	private CustomFilterSecurityInterceptor customFilterSecurityInterceptor;
 	@Autowired
@@ -42,6 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		 http 
 		 	.addFilterBefore(customFilterSecurityInterceptor, FilterSecurityInterceptor.class)
+		 	.addFilterAt(customUsernamePasswordAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
 	        .authorizeRequests().accessDecisionManager(customAccessDecisionManager)  
 	        .antMatchers("/js/**").permitAll()
 	        .antMatchers("/css/**").permitAll()
@@ -72,6 +81,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	        .invalidSessionUrl("/common/login")
 	        .maximumSessions(1)
 	        .expiredUrl("/common/login?expire=true"); 
+	}
+	
+	@Bean
+	public CustomUsernamePasswordAuthenticationFilter customUsernamePasswordAuthenticationFilter()throws Exception{
+		CustomUsernamePasswordAuthenticationFilter filter=new CustomUsernamePasswordAuthenticationFilter();
+		filter.setUserMapper(userMapper);
+		filter.setRedisSessionManager(redisSessionManager);
+		filter.setAuthenticationManager(authenticationManager());
+		filter.setFilterProcessesUrl("/common/login/submitlogin");
+		filter.setAuthenticationSuccessHandler(customSavedRequestAwareAuthenticationSuccessHandler);
+		filter.setAuthenticationFailureHandler(simpleUrlAuthenticationFailureHandler());
+		return filter;
+				
+	}
+	
+	@Bean
+	public SimpleUrlAuthenticationFailureHandler simpleUrlAuthenticationFailureHandler(){
+		SimpleUrlAuthenticationFailureHandler handler=new SimpleUrlAuthenticationFailureHandler();
+		handler.setDefaultFailureUrl("/common/login?error=code");
+		return handler;
 	}
 	
 	@Bean
