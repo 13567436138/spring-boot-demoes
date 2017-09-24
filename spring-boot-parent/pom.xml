@@ -225,7 +225,7 @@
   				<p.redis.master.port>7000</p.redis.master.port>
   				<p.redis.master.pass>none</p.redis.master.pass>
   				<p.jdbc.driver>com.mysql.jdbc.Driver</p.jdbc.driver>
-  				<p.master.jdbc.url>jdbc:mysql://192.168.198.129:3306/shiro?failOverReadOnly=false&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true&amp;allowMultiQueries=true</p.master.jdbc.url>
+  				<p.master.jdbc.url>jdbc:mysql://192.168.198.131:3306/shiro?failOverReadOnly=false&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true&amp;allowMultiQueries=true</p.master.jdbc.url>
   				<p.master.jdbc.username>root</p.master.jdbc.username>
   				<p.master.jdbc.password>mark</p.master.jdbc.password>
   			</properties>

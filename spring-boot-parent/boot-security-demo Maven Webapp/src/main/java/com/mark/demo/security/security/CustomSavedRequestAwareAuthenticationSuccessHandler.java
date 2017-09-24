@@ -3,6 +3,7 @@ package com.mark.demo.security.security;
 import java.io.IOException;
 import java.util.Date;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +24,13 @@ import org.springframework.stereotype.Service;
 @Service("customSavedRequestAwareAuthenticationSuccessHandler")
 public class CustomSavedRequestAwareAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
 	private static Logger logger = LoggerFactory.getLogger(CustomSavedRequestAwareAuthenticationSuccessHandler.class);  
-     
+    
+	@PostConstruct
+	public void init(){
+		this.setAlwaysUseDefaultTargetUrl(true);
+		this.setDefaultTargetUrl("/admins/indexes/index");
+	}
+	
 	@Override  
     public void onAuthenticationSuccess(HttpServletRequest request,  
             HttpServletResponse response, Authentication authentication)  
