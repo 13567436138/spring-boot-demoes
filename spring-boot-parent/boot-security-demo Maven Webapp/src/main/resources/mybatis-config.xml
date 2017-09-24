@@ -43,8 +43,8 @@
     
     <!-- 插件配置 -->
     <plugins>
-        <plugin interceptor="com.mark.demo.shiro.mybatis.PaginationInterceptor"/>
-        <plugin interceptor="com.mark.demo.shiro.mybatis.cache.RedisCachingExecutor">
+        <plugin interceptor="com.mark.demo.security.mybatis.PaginationInterceptor"/>
+        <plugin interceptor="com.mark.demo.security.mybatis.cache.RedisCachingExecutor">
             <property name="dependency" value="dependencys.xml"/>
             <property name="cacheEnabled" value="true"/>
         </plugin>

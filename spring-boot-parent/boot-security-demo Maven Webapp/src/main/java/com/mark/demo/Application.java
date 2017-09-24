@@ -14,7 +14,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableAutoConfiguration
 @SpringBootApplication
 @ComponentScan
-@MapperScan("com.mark.demo.shiro.mapper")
+@MapperScan("com.mark.demo.security.mapper")
 public class Application {
 
 	public static void main(String[] args) {
