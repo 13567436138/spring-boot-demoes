@@ -12,12 +12,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler;
+import org.springframework.stereotype.Service;
 
 /*
 *hxp(hxpwangyi@126.com)
 *2017年9月22日
 *
 */
+@Service("customLogoutSuccessHandler")
 public class CustomLogoutSuccessHandler extends SimpleUrlLogoutSuccessHandler {
 	private static Logger logger = LoggerFactory.getLogger(CustomLogoutSuccessHandler.class);  
   

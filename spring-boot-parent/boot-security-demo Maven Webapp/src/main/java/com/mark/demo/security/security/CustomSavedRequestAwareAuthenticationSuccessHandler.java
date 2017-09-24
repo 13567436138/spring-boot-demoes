@@ -13,12 +13,14 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.security.web.savedrequest.RequestCache;
+import org.springframework.stereotype.Service;
 
 /*
 *hxp(hxpwangyi@126.com)
 *2017年9月22日
 *
 */
+@Service("customSavedRequestAwareAuthenticationSuccessHandler")
 public class CustomSavedRequestAwareAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
 	private static Logger logger = LoggerFactory.getLogger(CustomSavedRequestAwareAuthenticationSuccessHandler.class);  
      

@@ -22,6 +22,7 @@ import com.mark.demo.security.mapper.UserMapper;
 *2017年9月22日
 *
 */
+@Service("customUserDetailsService")
 public class CustomUserDetailsService implements UserDetailsService {
 	@Autowired
 	private UserMapper userMapper;
