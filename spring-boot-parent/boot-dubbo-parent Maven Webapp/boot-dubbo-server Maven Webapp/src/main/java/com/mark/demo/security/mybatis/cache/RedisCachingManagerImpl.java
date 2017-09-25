@@ -55,8 +55,8 @@ public class RedisCachingManagerImpl implements RedisCachingManager{
 	
 	public void initialize(Properties properties)
 	{
-		PropertiesLoader loader=new PropertiesLoader("mybatis.properties");
-		String dependency = loader.getProperty("dependencys");
+		PropertiesLoader loader=new PropertiesLoader("application.properties");
+		String dependency = loader.getProperty("mybatis.dependencys");
 		if(!("".equals(dependency) || dependency==null))
 		{
 			InputStream inputStream;
