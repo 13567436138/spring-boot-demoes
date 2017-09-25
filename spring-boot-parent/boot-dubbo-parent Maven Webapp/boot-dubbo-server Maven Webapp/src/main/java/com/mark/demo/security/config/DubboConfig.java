@@ -34,6 +34,7 @@ public class DubboConfig {
       public RegistryConfig registry() {
           RegistryConfig registryConfig = new RegistryConfig();
           registryConfig.setAddress(registryAddress);
+          registryConfig.setCluster("failover");
           registryConfig.setProtocol(registryProtocol);
           return registryConfig;
       }
