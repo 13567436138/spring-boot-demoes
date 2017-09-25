@@ -18,6 +18,10 @@
   </properties>
 
   <dependencies>
-    
+    	<dependency>
+    		<groupId>com.mark.demo</groupId>
+    		<artifactId>boot-dubbo-common</artifactId>
+    		<version>0.0.1-SNAPSHOT</version>
+    	</dependency>
   </dependencies>
 </project>

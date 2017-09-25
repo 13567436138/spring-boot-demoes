@@ -7,6 +7,9 @@
         <dependent-module archiveName="boot-dubbo-api-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/boot-dubbo-api/boot-dubbo-api">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="boot-dubbo-common-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/boot-dubbo-common/boot-dubbo-common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="boot-dubbo-server"/>
         <property name="java-output-path" value="/boot-dubbo-server Maven Webapp/target/classes"/>
     </wb-module>
