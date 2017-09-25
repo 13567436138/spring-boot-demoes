@@ -13,5 +13,17 @@
   <modules>
   	<module>boot-dubbo-client Maven Webapp</module>
   	<module>boot-dubbo-server Maven Webapp</module>
+  	<module>boot-dubbo-api</module>
   </modules>
+  <dependencyManagement>
+  	<dependencies>
+  		<!-- https://mvnrepository.com/artifact/com.alibaba/dubbo -->
+		<dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>dubbo</artifactId>
+		    <version>2.5.5</version>
+		</dependency>
+  		
+  	</dependencies>
+  </dependencyManagement>
 </project>

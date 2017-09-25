@@ -10,8 +10,79 @@
   <packaging>war</packaging>
   <name>boot-dubbo-client Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
   <dependencies>
-    
+   		 <dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>dubbo</artifactId>
+		</dependency>
+		<dependency>  
+	        <groupId>org.springframework.boot</groupId>  
+	        <artifactId>spring-boot-starter-data-redis</artifactId>  
+	    </dependency>
+	    <dependency>     
+	        <groupId>org.springframework.boot</groupId>    
+	        <artifactId>spring-boot-starter-freemarker</artifactId>  
+	    </dependency>
+	    <dependency>
+	  		<groupId>org.springframework.boot</groupId>  
+	        <artifactId>spring-boot-starter-web</artifactId>
+	  	</dependency>
+	  	<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		 <!-- Servlet -->  
+	    <dependency>  
+	        <groupId>javax.servlet</groupId>  
+	        <artifactId>javax.servlet-api</artifactId> 
+	    </dependency>  
+	    <dependency>  
+	        <groupId>javax.servlet.jsp</groupId>  
+	        <artifactId>jsp-api</artifactId>  
+	    </dependency>  
+	    <dependency>  
+	        <groupId>javax.servlet</groupId>  
+	        <artifactId>jstl</artifactId>  
+	    </dependency>
+	    <dependency>
+	    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.httpcomponents</groupId>
+		    <artifactId>httpclient</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>com.google.code.kaptcha</groupId>
+		    <artifactId>kaptcha</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>com.google.guava</groupId>
+		    <artifactId>guava</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>fastjson</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.jsoup</groupId>
+		    <artifactId>jsoup</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>commons-validator</groupId>
+		    <artifactId>commons-validator</artifactId>
+		</dependency> 
   </dependencies>
   <build>
     <finalName>boot-dubbo-client</finalName>

@@ -10,8 +10,30 @@
   <packaging>war</packaging>
   <name>boot-dubbo-server Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
   <dependencies>
-    
+   		 <dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>dubbo</artifactId>
+		</dependency>
+		<dependency>  
+	        <groupId>org.springframework.boot</groupId>  
+	        <artifactId>spring-boot-starter-data-redis</artifactId>  
+	    </dependency>
+	    <dependency>
+		    <groupId>org.mybatis.spring.boot</groupId>
+		    <artifactId>mybatis-spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+	        <groupId>mysql</groupId>
+	        <artifactId>mysql-connector-java</artifactId>
+	    </dependency>
+	    <dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>druid</artifactId>
+		</dependency>
   </dependencies>
   <build>
     <finalName>boot-dubbo-server</finalName>
