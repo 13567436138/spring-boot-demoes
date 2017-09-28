@@ -5,6 +5,8 @@ import java.util.UUID;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.annotation.WebInitParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,6 +15,8 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.mark.demo.security.utils.CookieUtils;
 
+@WebFilter(filterName="SessionFilter",urlPatterns="/*"
+)
 public class SessionFilter extends OncePerRequestFilter
 {
     public static final String SESSION_ID_NAME = "JSESSIONID";

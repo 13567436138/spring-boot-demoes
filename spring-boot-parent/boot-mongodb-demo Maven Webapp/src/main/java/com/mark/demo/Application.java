@@ -2,6 +2,7 @@ package com.mark.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.ComponentScan;
 
 /*
@@ -9,6 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 *2017年9月16日
 *
 */
+@ServletComponentScan
 @SpringBootApplication
 @ComponentScan
 public class Application {

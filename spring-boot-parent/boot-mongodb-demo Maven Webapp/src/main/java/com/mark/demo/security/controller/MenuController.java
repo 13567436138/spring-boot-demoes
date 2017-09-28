@@ -51,7 +51,7 @@ public class MenuController {
 	@RequestMapping("/list")
 	public String list(HttpServletResponse response){
 		response.setHeader("X-Frame-Options", "sameorigin");
-		return "admins/system/menu.ftl";
+		return "admins/system/menu";
 	}
 	
 	@RequestMapping("/list/data")

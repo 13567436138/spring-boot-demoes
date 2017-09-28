@@ -14,6 +14,6 @@ public class IndexController {
 	
 	@RequestMapping("/index")
 	public String index(){
-		return "admins/main.ftl";
+		return "admins/main";
 	}
 }
