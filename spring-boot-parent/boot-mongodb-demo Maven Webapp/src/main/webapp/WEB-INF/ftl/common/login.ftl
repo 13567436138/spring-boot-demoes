@@ -31,7 +31,7 @@
                         <input type="text" name="captcha" datatype="*" />
                         <img  class="captcha_img" src="${base}/captcha" alt=""/>
 		            </div> 
-		             <div style="padding:5px 0;text-align: center;color: red;" id="showMsg"></div>  
+		             <div style="padding:5px 0;text-align: center;color: red;" id="showMsg">${msg}</div>  
 		        </form>  
             </div>  
             <div region="south" border="false" style="text-align:right;padding:5px 0;">  

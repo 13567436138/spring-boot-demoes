@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class LoginController extends GenericController
      * @throws UnsupportedEncodingException
      */
     @RequestMapping("/login")
-    public String loginForward(String redirect, Model model) throws UnsupportedEncodingException
+    public String loginForward(String redirect, Model model,String error) throws UnsupportedEncodingException
     {
         /*if (StringUtils.isNotBlank(redirect))
         {// 判断是否有跳转的地址
@@ -50,6 +51,12 @@ public class LoginController extends GenericController
           
             model.addAttribute("redirect", URLDecoder.decode(redirect, CharsetConst.CHARSET_UT));
         }*/
+    	if(StringUtils.isNotEmpty(error)&&error.equals("code")){
+    		model.addAttribute("msg", "验证码错误");
+    		model.addAttribute("error", true);
+    	}else{
+    		model.addAttribute("msg","");
+    	}
         return "common/login";
     }
     
