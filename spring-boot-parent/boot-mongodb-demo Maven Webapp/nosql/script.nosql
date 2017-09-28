@@ -1,0 +1,4 @@
+db.user.save({userName:"mark",password:"mark"});
+
+db.menu.save({_id:"1",menuName:"系统管理",menuDesc:"系统管理",order:1,parentId:"-1"});
+db.menu.save({_id:"2",menuName:"菜单管理",menuDesc:"菜单管理",link:"/menu/list",order:1,parentId:db.menu.findOne({menuName:"系统管理"})._id});
