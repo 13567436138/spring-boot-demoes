@@ -9,7 +9,7 @@
     <!--<dubbo:monitor protocol="registry" />-->
     <dubbo:application name="${dubbo.application.name}" />
     <dubbo:registry protocol="${dubbo.registry.protocol}" address="${dubbo.registry.address}" />  
-	
+	<dubbo:monitor protocol="registry" />
     <dubbo:consumer check="false"/>
 
     
