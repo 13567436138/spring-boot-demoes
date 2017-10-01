@@ -23,6 +23,7 @@
   		<module>boot-mongodb-demo Maven Webapp</module>
   		<module>boot-elasticsearch-demo Maven Webapp</module>
   		<module>boot-solr-demo Maven Webapp</module>
+  		<module>boot-spring-batch-demo Maven Webapp</module>
   </modules>
   
   <dependencyManagement>
