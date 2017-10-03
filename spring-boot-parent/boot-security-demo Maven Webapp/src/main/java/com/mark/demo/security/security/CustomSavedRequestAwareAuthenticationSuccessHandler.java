@@ -3,7 +3,6 @@ package com.mark.demo.security.security;
 import java.io.IOException;
 import java.util.Date;
 
-import javax.annotation.PostConstruct;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,16 +20,10 @@ import org.springframework.stereotype.Service;
 *2017年9月22日
 *
 */
-@Service("customSavedRequestAwareAuthenticationSuccessHandler")
+@Service
 public class CustomSavedRequestAwareAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
 	private static Logger logger = LoggerFactory.getLogger(CustomSavedRequestAwareAuthenticationSuccessHandler.class);  
-    
-	@PostConstruct
-	public void init(){
-		this.setAlwaysUseDefaultTargetUrl(true);
-		this.setDefaultTargetUrl("/admins/indexes/index");
-	}
-	
+     
 	@Override  
     public void onAuthenticationSuccess(HttpServletRequest request,  
             HttpServletResponse response, Authentication authentication)  
@@ -40,11 +33,20 @@ public class CustomSavedRequestAwareAuthenticationSuccessHandler extends SavedRe
         String address =  request.getRemoteAddr();  //远程地址  
         //写入日志   
         logger.info("用户" + userName + "在地址" + address + "登入系统，时间："+new Date());  
+        setDefaultTargetUrl("");
         super.onAuthenticationSuccess(request, response, authentication);     
   
     }  
   
-    @Override  
+	
+    @Override
+	public void setDefaultTargetUrl(String defaultTargetUrl) {
+    	super.setAlwaysUseDefaultTargetUrl(true);
+		super.setDefaultTargetUrl("/admins/indexes/index");
+	}
+
+
+	@Override  
     public void setRequestCache(RequestCache requestCache) {  
           
         super.setRequestCache(requestCache);  

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.annotation.PostConstruct;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,14 +19,10 @@ import org.springframework.stereotype.Service;
 *2017年9月22日
 *
 */
-@Service("customLogoutSuccessHandler")
+@Service
 public class CustomLogoutSuccessHandler extends SimpleUrlLogoutSuccessHandler {
 	private static Logger logger = LoggerFactory.getLogger(CustomLogoutSuccessHandler.class);  
-	@PostConstruct
-	public void init(){
-		this.setAlwaysUseDefaultTargetUrl(true);
-		this.setDefaultTargetUrl("/logout");
-	}
+  
     @Override  
     public void onLogoutSuccess(HttpServletRequest request,  
             HttpServletResponse response, Authentication authentication)  

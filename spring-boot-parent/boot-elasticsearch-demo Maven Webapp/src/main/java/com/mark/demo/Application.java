@@ -20,6 +20,7 @@ import com.mark.demo.security.anno.MyBatisDao;
 @ComponentScan
 @ServletComponentScan
 @MapperScan(value="com.mark.demo.security.mapper",annotationClass=MyBatisDao.class)
+@EnableElasticsearchRepositories(basePackages={"com.mark.demo.security.repsitory"})
 public class Application {
 
 	public static void main(String[] args) {

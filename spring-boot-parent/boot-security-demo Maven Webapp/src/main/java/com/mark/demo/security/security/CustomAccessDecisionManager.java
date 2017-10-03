@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 *2017年9月22日
 *
 */
-@Service("customAccessDecisionManager")
+@Service
 public class CustomAccessDecisionManager implements AccessDecisionManager {
 
 		/**  
