@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mark.demo.shiro.mapper.MenuMapper">
+	<cache eviction="LRU" type="com.mark.demo.shiro.mybatis.cache.MyBatisRedisCache" ></cache>
+    <resultMap type="Menu" id="menuMap">
+    	<result column="menuId" property="id"/>
+    	<result column="menuName" property="menuName"/>
+    	<result column="menuDesc" property="menuDesc"/>
+    	<result column="link" property="link"/>
+    	<result column="order" property="order"/>
+    </resultMap>
+    <resultMap type="Menu" id="menuWithParentMap" extends="menuMap">
+    	<association property="parent" javaType="com.mark.demo.shiro.entity.Menu" column="pid">
+    		<result column="pid" property="id"/>
+	    	<result column="p_menuName" property="menuName"/>
+	    	<result column="p_menuDesc" property="menuDesc"/>
+	    	<result column="p_link" property="link"/>
+	    	<result column="p_order" property="order"/>
+    	</association>
+    </resultMap>
+    
+    <select id="getMenuTopLever"  resultMap="menuMap" useCache="true">
+    	select * from menu where pid=-1
+    </select>
+    <select id="getMenuChildren"  parameterType="int" resultMap="menuMap">
+    	select * from menu where pid=#{pid}
+    </select>
+    <update id="updateMenu" parameterType="Menu">
+    	update menu set menuName=#{menuName} where menuId=#{id}
+    </update>
+    
+    <select id="findList" parameterType="Menu" resultMap="menuWithParentMap">
+    	select 
+    		a.*,
+    		p.menuName as p_menuName,
+    		p.menuDesc as p_menuDesc,
+    		p.link as p_link,
+    		p.`order` as p_order
+    		
+    	 		from menu a left join menu p on a.pid=p.menuId
+    	 	
+    	<where>
+    		1=1
+    		<if test="menuName!=null ">
+	    		and a.menuName like '${menuName}%'
+	    	</if>
+	    	<if test="parent!=null and parent.menuName!=null and parent.menuName!=''">
+	    		and p.menuName like '${parent.menuName}%'
+	    	</if>
+    	</where> 
+    	
+    </select>
+    
+</mapper>
+
