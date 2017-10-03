@@ -29,7 +29,7 @@ public class SolrController {
     @RequestMapping("/list")
     public String list(HttpServletResponse response){
         response.setHeader("X-Frame-Options","SAMEORIGHT");
-        return "admins/search/solr/list.ftl";
+        return "admins/search/solr/list";
     }
 
     @RequestMapping("/list/data")
