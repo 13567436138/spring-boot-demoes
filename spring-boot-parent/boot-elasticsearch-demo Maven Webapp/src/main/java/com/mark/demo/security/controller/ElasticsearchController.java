@@ -29,7 +29,7 @@ public class ElasticsearchController {
     @RequestMapping("/list")
     public String list(HttpServletResponse response){
         response.setHeader("X-Frame-Options","SAMEORIGHT");
-        return "admins/search/elasticsearch/list.ftl";
+        return "admins/search/elasticsearch/list";
     }
 
     @RequestMapping("/list/data")
