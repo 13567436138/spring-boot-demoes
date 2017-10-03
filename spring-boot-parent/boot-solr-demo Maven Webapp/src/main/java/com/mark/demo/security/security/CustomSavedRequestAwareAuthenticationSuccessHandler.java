@@ -33,11 +33,20 @@ public class CustomSavedRequestAwareAuthenticationSuccessHandler extends SavedRe
         String address =  request.getRemoteAddr();  //远程地址  
         //写入日志   
         logger.info("用户" + userName + "在地址" + address + "登入系统，时间："+new Date());  
+        setDefaultTargetUrl("");
         super.onAuthenticationSuccess(request, response, authentication);     
   
     }  
   
-    @Override  
+	
+    @Override
+	public void setDefaultTargetUrl(String defaultTargetUrl) {
+    	super.setAlwaysUseDefaultTargetUrl(true);
+		super.setDefaultTargetUrl("/admins/indexes/index");
+	}
+
+
+	@Override  
     public void setRequestCache(RequestCache requestCache) {  
           
         super.setRequestCache(requestCache);  
