@@ -1,13 +1,11 @@
 package com.mark.demo.security.service.impl;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mark.demo.security.base.GenericServiceImpl;
 import com.mark.demo.security.entity.Resource;
-import com.mark.demo.security.mapper.ResourceMapper;
+import com.mark.demo.security.repository.ResourceRepository;
 import com.mark.demo.security.service.ResourceService;
 
 /*
@@ -16,14 +14,14 @@ import com.mark.demo.security.service.ResourceService;
 *
 */
 @Service
-public class ResourceServiceImpl extends GenericServiceImpl<Resource> implements ResourceService {
+public class ResourceServiceImpl extends GenericServiceImpl<Resource,Integer> implements ResourceService {
 	@Autowired
-	private ResourceMapper mapper;
+	private ResourceRepository resourceRepository;
 	
 	@Autowired(required=true)
-	public ResourceServiceImpl(ResourceMapper dao){
-		super(dao);
-		this.mapper=dao;
+	public ResourceServiceImpl(ResourceRepository resourceRepository){
+		super(resourceRepository);
+		this.resourceRepository=resourceRepository;
 	}
 
 	

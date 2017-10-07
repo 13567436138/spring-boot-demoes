@@ -1,22 +1,17 @@
 package com.mark.demo.security.security;
 
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.stereotype.Service;
 
 import com.mark.demo.security.entity.User;
-import com.mark.demo.security.mapper.UserMapper;
+import com.mark.demo.security.repository.UserRepository;
 import com.mark.demo.security.session.RedisSessionManager;
 import com.mark.demo.security.session.RedisSessionManager.SessionKey;
 import com.mark.demo.security.utils.StringUtils;
@@ -31,12 +26,13 @@ public class CustomUsernamePasswordAuthenticationFilter extends UsernamePassword
 	public static final String VALIDATE_CODE = "captcha";  
     public static final String USERNAME = "userName";  
     public static final String PASSWORD = "password";
-    private UserMapper userMapper;
+    private UserRepository userRepository;
 	private RedisSessionManager redisSessionManager;
 
 	
-	public void setUserMapper(UserMapper userMapper) {
-		this.userMapper = userMapper;
+
+	public void setUserRepository(UserRepository userRepository) {
+		this.userRepository = userRepository;
 	}
 
 	public void setRedisSessionManager(RedisSessionManager redisSessionManager) {
@@ -62,7 +58,7 @@ public class CustomUsernamePasswordAuthenticationFilter extends UsernamePassword
         //验证用户账号与密码是否对应  
         username = username.trim();  
           
-        User user = userMapper.getUserByUserName(username);
+        User user = userRepository.findByUserName(username);
           
         if(user == null || !user.getPassword().equals(password)) {  
             throw new AuthenticationServiceException("用户名或者密码错误！");   

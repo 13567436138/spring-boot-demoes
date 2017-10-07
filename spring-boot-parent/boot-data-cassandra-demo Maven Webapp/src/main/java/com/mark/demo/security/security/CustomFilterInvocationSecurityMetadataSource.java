@@ -35,11 +35,11 @@ public class CustomFilterInvocationSecurityMetadataSource implements FilterInvoc
     }  
 
     private void loadResourceDefine() {     
-        List<Resource> authorities = resourceService.findAll();
+        Iterable<Resource> authorities = resourceService.findAll();
                       
         resourceMap = new HashMap<String, Collection<ConfigAttribute>>();  
          
-        if(authorities!=null && authorities.size()>0 )  
+        if(authorities!=null && authorities.iterator().hasNext() )  
             for (Resource auth : authorities) {      
                 String authName = auth.getRole();       
                 ConfigAttribute ca = new SecurityConfig(authName);                        

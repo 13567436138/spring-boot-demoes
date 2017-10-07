@@ -8,6 +8,6 @@ import com.mark.demo.security.entity.Resource;
 *2017年9月22日
 *
 */
-public interface ResourceService extends GenericService<Resource> {
+public interface ResourceService extends GenericService<Resource,Integer> {
 
 }

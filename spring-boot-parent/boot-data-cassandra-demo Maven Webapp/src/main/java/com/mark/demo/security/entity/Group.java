@@ -1,20 +1,17 @@
 package com.mark.demo.security.entity;
 
-public class Group {
-    private Integer groupid;
+import org.springframework.data.cassandra.mapping.Table;
+
+import com.mark.demo.security.base.GenericEntity;
+
+@Table
+public class Group extends GenericEntity{
 
     private String groupname;
 
     private String groupdesc;
 
-    public Integer getGroupid() {
-        return groupid;
-    }
-
-    public void setGroupid(Integer groupid) {
-        this.groupid = groupid;
-    }
-
+   
     public String getGroupname() {
         return groupname;
     }

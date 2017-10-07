@@ -15,7 +15,7 @@ import org.springframework.security.web.access.intercept.FilterSecurityIntercept
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.mark.demo.security.mapper.UserMapper;
+import com.mark.demo.security.repository.UserRepository;
 import com.mark.demo.security.security.CustomAccessDecisionManager;
 import com.mark.demo.security.security.CustomFilterSecurityInterceptor;
 import com.mark.demo.security.security.CustomLogoutSuccessHandler;
@@ -33,7 +33,7 @@ import com.mark.demo.security.session.RedisSessionManager;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
-    private UserMapper userMapper;
+    private UserRepository userRepository;
 	@Autowired
 	private RedisSessionManager redisSessionManager;
 	@Autowired
@@ -86,7 +86,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Bean
 	public CustomUsernamePasswordAuthenticationFilter customUsernamePasswordAuthenticationFilter()throws Exception{
 		CustomUsernamePasswordAuthenticationFilter filter=new CustomUsernamePasswordAuthenticationFilter();
-		filter.setUserMapper(userMapper);
+		filter.setUserRepository(userRepository);
 		filter.setRedisSessionManager(redisSessionManager);
 		filter.setAuthenticationManager(authenticationManager());
 		filter.setFilterProcessesUrl("/common/login/submitlogin");

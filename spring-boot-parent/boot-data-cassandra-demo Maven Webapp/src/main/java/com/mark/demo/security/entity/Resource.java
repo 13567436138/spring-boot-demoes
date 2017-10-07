@@ -1,5 +1,7 @@
 package com.mark.demo.security.entity;
 
+import org.springframework.data.cassandra.mapping.Table;
+
 import com.mark.demo.security.base.GenericEntity;
 
 /*
@@ -7,6 +9,7 @@ import com.mark.demo.security.base.GenericEntity;
 *2017年9月22日
 *
 */
+@Table
 public class Resource extends GenericEntity {
 	private String role;
 	private String url;

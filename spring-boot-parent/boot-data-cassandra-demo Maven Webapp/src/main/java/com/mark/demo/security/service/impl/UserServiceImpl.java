@@ -1,14 +1,11 @@
 package com.mark.demo.security.service.impl;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mark.demo.security.base.GenericServiceImpl;
-import com.mark.demo.security.entity.Menu;
 import com.mark.demo.security.entity.User;
-import com.mark.demo.security.mapper.UserMapper;
+import com.mark.demo.security.repository.UserRepository;
 import com.mark.demo.security.service.UserService;
 
 /*
@@ -17,19 +14,19 @@ import com.mark.demo.security.service.UserService;
 *
 */
 @Service
-public class UserServiceImpl extends GenericServiceImpl<User> implements UserService {
+public class UserServiceImpl extends GenericServiceImpl<User,Integer> implements UserService {
 	
-	private UserMapper userMapper;
+	private UserRepository userRepository;
 	
 	@Autowired(required=true)
-	public UserServiceImpl(UserMapper userMapper) {
-		super(userMapper);
-		this.userMapper=userMapper;
+	public UserServiceImpl(UserRepository userRepository) {
+		super(userRepository);
+		this.userRepository=userRepository;
 	}
 
 	@Override
-	public List<User> findAll() {
-		return userMapper.selectAll();
+	public Iterable<User> findAll() {
+		return userRepository.findAll();
 	}
 	
 

@@ -1,7 +1,9 @@
 package com.mark.demo.security.entity;
 
-import com.mark.demo.security.base.GenericEntity;
+import org.springframework.data.cassandra.mapping.Table;
 
+import com.mark.demo.security.base.GenericEntity;
+@Table
 public class Role extends GenericEntity{
 
     private String roleName;

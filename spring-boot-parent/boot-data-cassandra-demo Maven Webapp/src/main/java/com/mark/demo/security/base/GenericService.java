@@ -1,5 +1,6 @@
 package com.mark.demo.security.base;
 
+import java.io.Serializable;
 import java.util.List;
 
 /*
@@ -7,12 +8,10 @@ import java.util.List;
 *2017年9月9日
 *
 */
-public interface GenericService <T extends GenericEntity>{
-	List<T> findList(T entity) ;
-	int delete(String refrencdId) ;
-	int insert(T entity) ;
-	int deleteByPrimaryKey(String refrenceid);
-	PaginateResult<T> findPage(Pagination page, T entity);
-	List<T> findAll();
+public interface GenericService <T extends GenericEntity,I extends Serializable>{
+	void delete(I refrencdId) ;
+	T insert(T entity) ;
+	void deleteByPrimaryKey(I refrenceid);
+	Iterable<T> findAll();
 	
 }

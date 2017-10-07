@@ -2,6 +2,9 @@ package com.mark.demo.security.base;
 
 import java.io.Serializable;
 
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.cassandra.mapping.PrimaryKey;
+
 
 public abstract class GenericEntity implements Serializable {
 
@@ -10,17 +13,20 @@ public abstract class GenericEntity implements Serializable {
     /**
      * 主键编号
      */
+    @PrimaryKey
     protected int id;
 
     /**
      * 删除标识
      */
+    @Transient
     protected Boolean delFlag = false;
 
     /**
      * 分页对象
      * <p>用于动态加入SQL分页语句的对象</p>
      */
+    @Transient
     protected Pagination pagination;
 
     public static long getSerialVersionUID() {

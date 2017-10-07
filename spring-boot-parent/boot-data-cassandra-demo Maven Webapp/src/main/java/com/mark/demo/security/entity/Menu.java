@@ -1,5 +1,7 @@
 package com.mark.demo.security.entity;
 
+import org.springframework.data.cassandra.mapping.Table;
+
 import com.mark.demo.security.base.GenericEntity;
 
 /*
@@ -7,8 +9,9 @@ import com.mark.demo.security.base.GenericEntity;
 *2017年9月5日
 *
 */
+@Table
 public class Menu extends GenericEntity{
-	private Menu parent;
+	private Integer pid;
 	private String menuName;
 	private String menuDesc;
 	private String link;
@@ -56,12 +59,14 @@ public class Menu extends GenericEntity{
 		this.link = link;
 	}
 
-	public Menu getParent() {
-		return parent;
+	public Integer getPid() {
+		return pid;
 	}
 
-	public void setParent(Menu parent) {
-		this.parent = parent;
+	public void setPid(Integer pid) {
+		this.pid = pid;
 	}
+
+	
 
 }

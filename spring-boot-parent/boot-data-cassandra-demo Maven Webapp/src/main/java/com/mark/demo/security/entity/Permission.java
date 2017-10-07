@@ -1,19 +1,15 @@
 package com.mark.demo.security.entity;
 
-public class Permission {
-    private Integer permissionid;
+import org.springframework.data.cassandra.mapping.Table;
+
+import com.mark.demo.security.base.GenericEntity;
+
+@Table
+public class Permission extends GenericEntity{
 
     private String permission;
 
     private String desc;
-
-    public Integer getPermissionid() {
-        return permissionid;
-    }
-
-    public void setPermissionid(Integer permissionid) {
-        this.permissionid = permissionid;
-    }
 
     public String getPermission() {
         return permission;
