@@ -15,10 +15,10 @@ import org.springframework.data.cassandra.repository.config.EnableCassandraRepos
 */
 @EnableAutoConfiguration
 @SpringBootApplication
-@ComponentScan
-@ServletComponentScan
 @EnableCassandraRepositories("com.mark.demo.security.repository")
 @EntityScan(basePackages="com.mark.demo.security.entity")
+@ComponentScan
+@ServletComponentScan
 public class Application {
 
 	public static void main(String[] args) {
