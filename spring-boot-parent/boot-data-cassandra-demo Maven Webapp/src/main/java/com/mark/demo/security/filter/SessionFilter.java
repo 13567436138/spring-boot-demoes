@@ -14,7 +14,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.mark.demo.security.utils.CookieUtils;
 
-@WebFilter(filterName="session",urlPatterns={"/*"})
+@WebFilter(filterName="sessionFilter",urlPatterns={"/*"})
 public class SessionFilter extends OncePerRequestFilter
 {
     public static final String SESSION_ID_NAME = "JSESSIONID";

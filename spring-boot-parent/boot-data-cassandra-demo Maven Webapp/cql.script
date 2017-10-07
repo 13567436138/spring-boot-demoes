@@ -43,6 +43,18 @@ insert into menu(id,pid,menuName,menuDesc,link,"order")values(4,1,'权限管理'
 insert into menu(id,pid,menuName,menuDesc,link,"order")values(5,1,'分组管理','分组管理','/group/list',2);
 insert into menu(id,pid,menuName,menuDesc,link,"order")values(6,1,'用户管理','用户管理','/user/list',2);
 
+insert into menu(id,pid,menuName,menuDesc,link,"order")values(9,1,'菜单管理','菜单管理','/menu/list',1);
+insert into menu(id,pid,menuName,menuDesc,link,"order")values(10,1,'角色管理','角色管理','/menu/list',2);
+insert into menu(id,pid,menuName,menuDesc,link,"order")values(11,1,'权限管理','权限管理','/permission/list',2);
+insert into menu(id,pid,menuName,menuDesc,link,"order")values(12,1,'分组管理','分组管理','/group/list',2);
+insert into menu(id,pid,menuName,menuDesc,link,"order")values(13,1,'用户管理','用户管理','/user/list',2);
+
+insert into menu(id,pid,menuName,menuDesc,link,"order")values(14,1,'菜单管理','菜单管理','/menu/list',1);
+insert into menu(id,pid,menuName,menuDesc,link,"order")values(15,1,'角色管理','角色管理','/menu/list',2);
+insert into menu(id,pid,menuName,menuDesc,link,"order")values(16,1,'权限管理','权限管理','/permission/list',2);
+insert into menu(id,pid,menuName,menuDesc,link,"order")values(17,1,'分组管理','分组管理','/group/list',2);
+insert into menu(id,pid,menuName,menuDesc,link,"order")values(18,1,'用户管理','用户管理','/user/list',2);
+
 insert into menu(id,pid,menuName,menuDesc,link,"order")values(7,-1,'mq消息','mq消息',null,1);
 insert into menu(id,pid,menuName,menuDesc,link,"order")values(8,7,'activemq消息','activemq消息','/admins/message/list',1);
 
@@ -134,6 +146,9 @@ alter table PERSISTENT_LOGINS
   
 DROP TABLE IF EXISTS resource;
 CREATE TABLE resource (
+  id int primary key,
   role varchar(100) DEFAULT NULL,
   url varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into resource(id,role,url)values(1,'ROLE_ADMIN','/admins/**');

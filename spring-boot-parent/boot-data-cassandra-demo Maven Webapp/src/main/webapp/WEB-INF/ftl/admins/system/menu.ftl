@@ -33,9 +33,7 @@
 	        columns:[[   
                    		{field:'id',title:'菜单编号',width:100,align:'center'},
                    		{field:'menuName',title:'菜单名称',width:100,align:'center'},
-                   		{field:'parent',title:'父菜单',width:100,align:'center',formatter:function(cellvalue, options, rowObject){
-                   			return cellvalue.menuName;
-                   		}},
+                   		
                    		{field:'link',title:'连接',width:200,align:'center'},
                    		{field:'menuDesc',title:'描述',width:300,align:'center'},
                    		{field:'order',title:'序号',width:100,align:'center'},

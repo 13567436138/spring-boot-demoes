@@ -10,7 +10,6 @@ import org.springframework.data.cassandra.config.java.AbstractCassandraConfigura
 *2017年10月7日
 *
 */
-@Configuration
 public class CassandraConfig extends AbstractCassandraConfiguration {
 
 	@Override
