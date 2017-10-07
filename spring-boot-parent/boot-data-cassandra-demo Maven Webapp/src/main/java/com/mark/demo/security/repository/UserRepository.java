@@ -1,6 +1,6 @@
 package com.mark.demo.security.repository;
 
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.cassandra.repository.CassandraRepository;
 
 import com.mark.demo.security.entity.User;
 
@@ -9,6 +9,6 @@ import com.mark.demo.security.entity.User;
 *2017年10月7日
 *
 */
-public interface UserRepository extends PagingAndSortingRepository<User, Integer> {
+public interface UserRepository extends CassandraRepository<User> {
 	User findByUserName(String userName);
 }

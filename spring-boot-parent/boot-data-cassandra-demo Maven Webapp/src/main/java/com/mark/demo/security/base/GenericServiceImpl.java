@@ -1,13 +1,9 @@
 package com.mark.demo.security.base;
 
 import java.io.Serializable;
-import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.PagingAndSortingRepository;
-
-import com.mark.demo.security.entity.Resource;
+import org.springframework.data.cassandra.repository.CassandraRepository;
+import org.springframework.data.cassandra.repository.support.BasicMapId;
 
 
 public abstract class GenericServiceImpl<T extends GenericEntity,I extends Serializable> implements GenericService <T,I> {
@@ -15,9 +11,9 @@ public abstract class GenericServiceImpl<T extends GenericEntity,I extends Seria
      * 持久层对象
      */
     
-    protected PagingAndSortingRepository<T,I> dao;
+    protected CassandraRepository<T> dao;
 
-    protected GenericServiceImpl(PagingAndSortingRepository<T,I> dao){
+    protected GenericServiceImpl(CassandraRepository<T> dao){
     	this.dao=dao;
     }
     
@@ -29,7 +25,7 @@ public abstract class GenericServiceImpl<T extends GenericEntity,I extends Seria
      * @author chenjp
      */
     public void delete(I refrencdId) {
-         dao.delete(refrencdId);
+         dao.delete(BasicMapId.id("id", refrencdId));
     }
 
     /**
@@ -50,7 +46,7 @@ public abstract class GenericServiceImpl<T extends GenericEntity,I extends Seria
      * @see public int delete(T entity)
      */
     public  void deleteByPrimaryKey(I refrenceid) {
-         dao.delete(refrenceid);
+         dao.delete(BasicMapId.id("id", refrenceid));
     }
 
     

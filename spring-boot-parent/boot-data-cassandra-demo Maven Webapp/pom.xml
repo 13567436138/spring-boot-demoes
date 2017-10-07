@@ -15,6 +15,11 @@
   	<resource.delimiter>$</resource.delimiter>
   </properties>
   <dependencies>
+  	<dependency>
+	  <groupId>com.google.guava</groupId>
+	  <artifactId>guava</artifactId>
+	  <version>19.0</version>
+	</dependency>
     <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-cassandra -->
 	<dependency>
 	    <groupId>org.springframework.boot</groupId>
@@ -47,10 +52,6 @@
 	<dependency>
 	    <groupId>com.google.code.kaptcha</groupId>
 	    <artifactId>kaptcha</artifactId>
-	</dependency>
-	<dependency>
-	    <groupId>com.google.guava</groupId>
-	    <artifactId>guava</artifactId>
 	</dependency>
 	<dependency>
 	    <groupId>com.alibaba</groupId>

@@ -1,6 +1,6 @@
 package com.mark.demo.security.repository;
 
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.cassandra.repository.CassandraRepository;
 
 import com.mark.demo.security.entity.Permission;
 
@@ -9,6 +9,6 @@ import com.mark.demo.security.entity.Permission;
 *2017年10月7日
 *
 */
-public interface PermissionRepository extends PagingAndSortingRepository<Permission, Integer> {
+public interface PermissionRepository extends CassandraRepository<Permission> {
 
 }
