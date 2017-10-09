@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mark.demo.security.mapper.ResourceMapper">
+	<!-- <cache eviction="LRU" type="com.mark.demo.security.mybatis.cache.MyBatisRedisCache" ></cache> -->
+    <resultMap type="Resource" id="resourceMap">
+    	<result column="role" property="role" />
+    	<result column="url" property="url" />
+    </resultMap>
+    
+   <select id="selectAll" resultMap="resourceMap">
+   		select * from resource
+   </select>
+    
+    
+</mapper>
+
