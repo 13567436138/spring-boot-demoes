@@ -28,6 +28,7 @@
   		<module>boot-gemfire-demo Maven Webapp</module>
   		<module>boot-spring-batch-admin-demo Maven Webapp</module>
   		<module>boot-data-cassandra-demo Maven Webapp</module>
+  		<module>boot-swagger2-demo Maven Webapp</module>
   </modules>
   
   <dependencyManagement>

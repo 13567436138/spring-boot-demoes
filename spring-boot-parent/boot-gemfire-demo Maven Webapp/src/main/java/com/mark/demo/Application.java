@@ -25,7 +25,6 @@ import org.springframework.data.gemfire.transaction.config.EnableGemfireCacheTra
 @EnableEntityDefinedRegions(basePackages = "com.mark.demo.security.entity")
 @EnableGemfireRepositories(basePackages={"com.mark.demo.security.repository"})
 @EnableGemfireCacheTransactions
-
 public class Application {
 
 	public static void main(String[] args) {

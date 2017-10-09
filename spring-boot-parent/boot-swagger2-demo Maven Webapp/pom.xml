@@ -1,0 +1,19 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+   <parent>
+  		<groupId>com.mark.demo</groupId>
+  		<artifactId>spring-boot-parent</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>boot-swagger2-demo</artifactId>
+  <packaging>war</packaging>
+  <name>boot-swagger2-demo Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    
+  </dependencies>
+  <build>
+    <finalName>boot-swagger2-demo</finalName>
+  </build>
+</project>
