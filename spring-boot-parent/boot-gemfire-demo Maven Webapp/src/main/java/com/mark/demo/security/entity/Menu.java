@@ -7,7 +7,9 @@ import java.io.IOException;
 import org.apache.geode.DataSerializable;
 import org.apache.geode.Instantiator;
 import org.springframework.data.annotation.PersistenceConstructor;
+import org.springframework.data.gemfire.mapping.annotation.PartitionRegion;
 import org.springframework.data.gemfire.mapping.annotation.Region;
+import org.springframework.data.gemfire.mapping.annotation.ReplicateRegion;
 
 import com.mark.demo.security.base.GenericEntity;
 
@@ -16,7 +18,7 @@ import com.mark.demo.security.base.GenericEntity;
 *2017年9月5日
 *
 */
-@Region("menu")
+@PartitionRegion("menu")
 public class Menu extends GenericEntity{
 	/**
 	 * 

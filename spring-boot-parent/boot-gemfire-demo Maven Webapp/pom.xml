@@ -13,17 +13,15 @@
   <properties>
   	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   	<resource.delimiter>$</resource.delimiter>
+  	<spring.version>5.0.0.RELEASE</spring.version>   
   </properties>
-  <dependencies>
-  	<dependency>
-	    <groupId>org.springframework.data</groupId>
-	    <artifactId>spring-data-geode</artifactId>
-	    <version>2.0.0.RELEASE</version>
-	</dependency>
+  <dependencies> 
+
     <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-gemfire -->
 	<dependency>
 	    <groupId>org.springframework.boot</groupId>
 	    <artifactId>spring-boot-starter-data-gemfire</artifactId>
+	    <version>1.5.7.RELEASE</version>
 	</dependency>
     <dependency>
 	    <groupId>org.springframework.boot</groupId>
@@ -93,6 +91,19 @@
         <artifactId>jstl</artifactId>  
     </dependency>
   </dependencies>
+  <dependencyManagement>
+  	<dependencies>
+  		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-dependencies</artifactId>
+		    <version>2.0.0.M4</version>
+		    <type>pom</type>
+		    <scope>import</scope>
+		</dependency>
+  		
+  	</dependencies>
+  </dependencyManagement>
   <build>
     <finalName>boot-gemfire-demo</finalName>
     <plugins>
@@ -117,4 +128,11 @@
          </plugin>
     </plugins>
   </build>
+  <repositories>
+  	<repository>
+  		<id>spring</id>
+  		<url>http://repo.spring.io/milestone/</url>
+  		<releases>true</releases>
+  	</repository>
+  </repositories>
 </project>

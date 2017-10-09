@@ -110,6 +110,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return daoAuthenticationProvider;
     }
 	
+	@Bean
    @Override
     protected AuthenticationManager authenticationManager() throws Exception {
         ProviderManager authenticationManager = new ProviderManager(Arrays.asList(daoAuthenticationProvider()));

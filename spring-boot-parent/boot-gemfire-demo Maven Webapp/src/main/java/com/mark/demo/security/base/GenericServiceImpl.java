@@ -25,7 +25,7 @@ public abstract class GenericServiceImpl<T extends DataSerializable,I extends Se
      * @author chenjp
      */
     public void delete(I refrencdId) {
-         dao.delete(refrencdId);
+         dao.deleteById(refrencdId);
     }
 
     /**
@@ -46,7 +46,7 @@ public abstract class GenericServiceImpl<T extends DataSerializable,I extends Se
      * @see public int delete(T entity)
      */
     public  void deleteByPrimaryKey(I refrenceid) {
-         dao.delete(refrenceid);
+         dao.deleteById(refrenceid);
     }
     
     public Iterable<T> findAll() {
