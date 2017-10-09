@@ -24,15 +24,17 @@ public class MyJerseryConfig extends ResourceConfig{
         //模板编码
         pro.put("jersey.config.server.mvc.encoding.freemarker", "UTF-8");
         //指定模板基础路径
-        pro.put("jersey.config.server.mvc.templateBasePath.freemarker", "/WEB-INF/ftl");
+        pro.put("jersey.config.server.mvc.templateBasePath.freemarker", "WEB-INF/ftl");
 
         addProperties(pro).register(FreemarkerMvcFeature.class);
+      
 	}
 	
 	@Bean
     public ServletRegistrationBean jerseyServlet() {
       ServletRegistrationBean registration = new ServletRegistrationBean(new ServletContainer(), "/*");
        registration.addInitParameter(ServletProperties.JAXRS_APPLICATION_CLASS, MyJerseryConfig.class.getName());
+       registration.addInitParameter("jersey.config.server.mvc.templateBasePath.freemarker", "WEB-INF/ftl");
        return registration;
     }
 } 
