@@ -8,6 +8,7 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletResponse;
 
 /*
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 *2017年10月7日
 *
 */
+@WebFilter(filterName="xframeOption",urlPatterns={"/*"})
 public class XFrameOptionsFilter implements Filter {
 
 	@Override

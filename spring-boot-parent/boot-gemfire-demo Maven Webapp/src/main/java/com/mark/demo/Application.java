@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.gemfire.config.annotation.CacheServerApplication;
 import org.springframework.data.gemfire.config.annotation.EnableEntityDefinedRegions;
 import org.springframework.data.gemfire.config.annotation.EnablePdx;
+import org.springframework.data.gemfire.config.annotation.PeerCacheApplication;
 import org.springframework.data.gemfire.repository.config.EnableGemfireRepositories;
 
 /*
@@ -17,14 +18,15 @@ import org.springframework.data.gemfire.repository.config.EnableGemfireRepositor
 */
 @EnableAutoConfiguration
 @SpringBootApplication
-@ComponentScan
-@ServletComponentScan
+@PeerCacheApplication
 @CacheServerApplication(locators = "localhost[1099]",logLevel = "info", autoStartup = true, maxConnections = 100)
 @EnablePdx(serializerBeanName = "compositePdxSerializer")
 @EnableEntityDefinedRegions(basePackages = {"com.mark.demo.security.entity"})
 @EnableGemfireRepositories(basePackages={"com.mark.demo.security.repository"})
+@ComponentScan
+@ServletComponentScan
 public class Application {
-
+    
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
