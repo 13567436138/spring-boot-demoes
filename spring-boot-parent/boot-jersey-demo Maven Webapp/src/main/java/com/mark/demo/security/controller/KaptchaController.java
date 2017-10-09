@@ -6,17 +6,17 @@ import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.Context;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.code.kaptcha.Producer;
 import com.mark.demo.security.session.RedisSessionManager;
 
 
-@Controller
+@Path("/test")
 public class KaptchaController
 {
     private static final Integer timeOut = 300;      // 五分钟
@@ -34,8 +34,8 @@ public class KaptchaController
      * @return
      * @throws Exception
      */
-    @RequestMapping("/captcha")
-    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception
+    @Path("/captcha")
+    public String handleRequest(@Context HttpServletRequest request,@Context HttpServletResponse response) throws Exception
     {
         response.setDateHeader("Expires", 0);
         response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");

@@ -3,26 +3,23 @@ package com.mark.demo.security.controller;
 import java.io.UnsupportedEncodingException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 
 import org.apache.commons.lang3.StringUtils;
+import org.glassfish.jersey.server.mvc.Viewable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mark.demo.security.base.GenericController;
-import com.mark.demo.security.constant.CommonConst;
-import com.mark.demo.security.entity.JsonMessage;
-import com.mark.demo.security.entity.User;
 import com.mark.demo.security.session.RedisSessionManager;
-import com.mark.demo.security.utils.JsonMessageUtils;
 
 
-@RequestMapping("/common")
-@Controller
+@Path("/common")
 public class LoginController extends GenericController
 {
     private static Logger       logger = LoggerFactory.getLogger(LoginController.class);
@@ -37,8 +34,9 @@ public class LoginController extends GenericController
      * @return {@link String}
      * @throws UnsupportedEncodingException
      */
-    @RequestMapping("/login")
-    public String loginForward(String redirect, Model model,String error) throws UnsupportedEncodingException
+    @Path("/login")
+    @Produces(MediaType.TEXT_HTML) 
+    public Viewable loginForward(@Context HttpServletRequest request,@QueryParam("redirect") String redirect,@QueryParam("error")String error) throws UnsupportedEncodingException
     {
         /*if (StringUtils.isNotBlank(redirect))
         {// 判断是否有跳转的地址
@@ -52,12 +50,12 @@ public class LoginController extends GenericController
             model.addAttribute("redirect", URLDecoder.decode(redirect, CharsetConst.CHARSET_UT));
         }*/
     	if(StringUtils.isNotEmpty(error)&&error.equals("code")){
-    		model.addAttribute("msg", "验证码错误");
-    		model.addAttribute("error", true);
+    		request.setAttribute("msg", "验证码错误");
+    		request.setAttribute("error", true);
     	}else{
-    		model.addAttribute("msg","");
+    		request.setAttribute("msg","");
     	}
-        return "common/login";
+        return new Viewable("common/login");
     }
     
     

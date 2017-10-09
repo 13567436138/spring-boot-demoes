@@ -1,18 +1,21 @@
 package com.mark.demo.security.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 /*
 *hxp(hxpwangyi@126.com)
 *2017年9月7日
 *
 */
-@Controller
-@RequestMapping("/admins/indexes")
+@Path("/admins/indexes")
 public class IndexController {
 	
-	@RequestMapping("/index")
+	@GET  
+    @Path("/index")  
+    @Produces(MediaType.TEXT_HTML) 
 	public String index(){
 		return "admins/main";
 	}

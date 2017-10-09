@@ -3,11 +3,13 @@ package com.mark.demo.security.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mark.demo.security.base.PaginateResult;
 import com.mark.demo.security.base.Pagination;
@@ -19,39 +21,45 @@ import com.mark.demo.security.service.MenuService;
 *2017年9月7日
 *
 */
-@Controller
-@RequestMapping("/menu")
+@Path("/menu")
 public class MenuController {
 	
 	@Autowired
 	private MenuService menuService;
 	
-	@RequestMapping("/getMenuTopLever")
-	@ResponseBody
+	@Path("/getMenuTopLever")
+	@Produces(MediaType.APPLICATION_JSON)
 	public List<Menu> getMenuTopLever(){
 		return  menuService.getMenuTopLever();
 	}
 	
-	@RequestMapping("/getMenuChildren")
-	@ResponseBody
-	public List<Menu> getMenuChildren(int pid){
+	@Path("/getMenuChildren")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Menu> getMenuChildren(@QueryParam("pid")int pid){
 		return  menuService.getMenuChildren(pid);
 	}
 	
-	@RequestMapping("/updateMenu")
-	@ResponseBody
-	public boolean updateMenu(Menu menu){
+	@Path("/updateMenu")
+	@Produces(MediaType.APPLICATION_JSON)
+	public boolean updateMenu(@Context Menu menu){
 		return menuService.updateMenu(menu);
 	}
 	
-	@RequestMapping("/list")
+	@Path("/list")
+	@Produces(MediaType.TEXT_HTML)
 	public String list(){
 		return "admins/system/menu";
 	}
 	
-	@RequestMapping("/list/data")
-	@ResponseBody
-	public PaginateResult<Menu> listData(Menu menu,Pagination pagination,HttpServletRequest request){
+	@Path("/list/data")
+	@Produces(MediaType.APPLICATION_JSON)
+	public PaginateResult<Menu> listData(@QueryParam("menuName")String menuName,@QueryParam("currentPage")Integer currentPage,
+			@QueryParam("pageSize")Integer pageSize,@Context HttpServletRequest request){
+		Menu menu =new Menu();
+		menu.setMenuName(menuName);
+		Pagination pagination=new Pagination();
+		pagination.setCurrentPage(currentPage);
+		pagination.setPageSize(pageSize);
 		return menuService.findPage(pagination, menu);
 	}
 }

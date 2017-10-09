@@ -1,8 +1,10 @@
 package com.mark.demo.security.controller;
 
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mark.demo.security.service.UserService;
 
@@ -11,11 +13,14 @@ import com.mark.demo.security.service.UserService;
 *2017年9月8日
 *
 */
-@Controller
-@RequestMapping("/user")
+@Path("/user")
 public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	
+	@Path("/test")
+	@Produces(value={MediaType.APPLICATION_JSON})
+	public String test(){
+		return "test";
+	}
 }
