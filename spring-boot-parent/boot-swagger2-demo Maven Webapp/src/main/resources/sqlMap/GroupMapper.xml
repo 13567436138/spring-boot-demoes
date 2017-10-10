@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mark.demo.security.mapper.GroupMapper">
+  <resultMap id="BaseResultMap" type="com.mark.demo.security.entity.Group">
+    <id column="groupId" jdbcType="INTEGER" property="groupid" />
+    <result column="groupName" jdbcType="VARCHAR" property="groupname" />
+    <result column="groupDesc" jdbcType="VARCHAR" property="groupdesc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    groupId, groupName, groupDesc
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from group
+    where groupId = #{groupid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from group
+    where groupId = #{groupid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mark.demo.security.entity.Group">
+    insert into group (groupId, groupName, groupDesc
+      )
+    values (#{groupid,jdbcType=INTEGER}, #{groupname,jdbcType=VARCHAR}, #{groupdesc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mark.demo.security.entity.Group">
+    insert into group
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="groupid != null">
+        groupId,
+      </if>
+      <if test="groupname != null">
+        groupName,
+      </if>
+      <if test="groupdesc != null">
+        groupDesc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="groupid != null">
+        #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="groupname != null">
+        #{groupname,jdbcType=VARCHAR},
+      </if>
+      <if test="groupdesc != null">
+        #{groupdesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mark.demo.security.entity.Group">
+    update group
+    <set>
+      <if test="groupname != null">
+        groupName = #{groupname,jdbcType=VARCHAR},
+      </if>
+      <if test="groupdesc != null">
+        groupDesc = #{groupdesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where groupId = #{groupid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mark.demo.security.entity.Group">
+    update group
+    set groupName = #{groupname,jdbcType=VARCHAR},
+      groupDesc = #{groupdesc,jdbcType=VARCHAR}
+    where groupId = #{groupid,jdbcType=INTEGER}
+  </update>
+</mapper>
