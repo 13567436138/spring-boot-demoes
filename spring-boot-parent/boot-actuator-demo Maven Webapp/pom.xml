@@ -16,7 +16,29 @@
 	    <groupId>org.springframework.boot</groupId>
 	    <artifactId>spring-boot-starter-actuator</artifactId>
 	</dependency>
-    	
+    <dependency>  
+	    <groupId>org.springframework.boot</groupId>  
+	    <artifactId>spring-boot-starter-web</artifactId>  
+	</dependency> 
+	<!-- https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-server-ui -->
+	<dependency>
+	    <groupId>de.codecentric</groupId>
+	    <artifactId>spring-boot-admin-server-ui</artifactId>
+	    <version>1.5.4</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-server -->
+	<dependency>
+	    <groupId>de.codecentric</groupId>
+	    <artifactId>spring-boot-admin-server</artifactId>
+	    <version>1.5.4</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-starter-client -->
+	<dependency>
+	    <groupId>de.codecentric</groupId>
+	    <artifactId>spring-boot-admin-starter-client</artifactId>
+	    <version>1.5.4</version>
+	</dependency>
+		
   </dependencies>
   <build>
     <finalName>boot-actuator-demo</finalName>
