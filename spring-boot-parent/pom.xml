@@ -31,6 +31,7 @@
   		<module>boot-swagger2-demo Maven Webapp</module>
   		<module>boot-actuator-demo Maven Webapp</module>
   		<module>boot-jersey-demo Maven Webapp</module>
+  		<module>boot-quartz-parent</module>
   </modules>
   
   <dependencyManagement>

@@ -15,7 +15,12 @@
   	<resource.delimiter>$</resource.delimiter>
   </properties>
   <dependencies>
-    
+    <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-integration -->
+	<dependency>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-starter-integration</artifactId>
+	</dependency>
+    	
   </dependencies>
   <build>
     <finalName>boot-integration-demo</finalName>
