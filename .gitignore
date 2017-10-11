@@ -8,3 +8,5 @@
 /spring-boot-parent/boot-swagger2-demo Maven Webapp/target
 /spring-boot-parent/boot-jersey-demo Maven Webapp/target
 /spring-boot-parent/boot-actuator-demo Maven Webapp/target
+/spring-boot-parent/boot-quartz-parent/boot-quartz-server1-demo Maven Webapp/target
+/spring-boot-parent/boot-quartz-parent/boot-quartz-server2-demo Maven Webapp/target
