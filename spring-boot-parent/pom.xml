@@ -32,6 +32,8 @@
   		<module>boot-actuator-demo Maven Webapp</module>
   		<module>boot-jersey-demo Maven Webapp</module>
   		<module>boot-quartz-parent</module>
+  		<module>boot-webservice-demo Maven Webapp</module>
+  		<module>boot-websocket-demo Maven Webapp</module> 
   </modules>
   
   <dependencyManagement>
