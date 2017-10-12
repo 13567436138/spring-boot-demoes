@@ -26,7 +26,7 @@
     	select * from menu where pid=#{pid}
     </select>
     <update id="updateMenu" parameterType="Menu">
-    	update menu set menuName=#{menuName} where menuId=#{id}
+    	update menu set menuName=#{menuName},menuDesc=#{menuDesc} where menuId=#{id}
     </update>
     
     <select id="findList" parameterType="Menu" resultMap="menuWithParentMap">
@@ -50,6 +50,8 @@
     	</where> 
     	
     </select>
-    
+    <select id="selectAll" resultMap="menuMap">
+    	select * from menu
+    </select>
 </mapper>
 

@@ -2,8 +2,9 @@
 <dependencies>
     <statements>
         <!-- 角色授权后刷新角色缓存 -->
-        <statement id="com.mark.demo.shiro.mapper.MenuMapper.updateMenu">
-        	<observer id="com.mark.demo.shiro.mapper.UserMapper.getMenuTopLever"/>
+        <statement id="com.mark.demo.security.mapper.MenuMapper.updateMenu">
+        	<observer id="com.mark.demo.security.mapper.UserMapper.getMenuTopLever"/>
+        	<observer id="com.mark.demo.security.mapper.MenuMapper.selectAll"/>
         </statement>
 
     </statements>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+            http://code.alibabatech.com/schema/dubbo 
+            http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!--<dubbo:monitor protocol="registry" />-->
+    <dubbo:application name="${dubbo.application.name}" />
+    <dubbo:registry protocol="${dubbo.registry.protocol}" address="${dubbo.registry.address}" />  
+	<dubbo:monitor protocol="registry" />
+    <dubbo:consumer check="false"/>
+
+    
+    <dubbo:reference id="menuService" timeout="100000"
+                     version="1.0" retries="0" interface="com.mark.demo.security.service.MenuService"/>
+    <dubbo:reference id="resourceService" timeout="100000"
+                     version="1.0" retries="0" interface="com.mark.demo.security.service.ResourceService"/>
+    <dubbo:reference id="userService" timeout="100000"
+                     version="1.0" retries="0" interface="com.mark.demo.security.service.UserService"/>
+    
+</beans>

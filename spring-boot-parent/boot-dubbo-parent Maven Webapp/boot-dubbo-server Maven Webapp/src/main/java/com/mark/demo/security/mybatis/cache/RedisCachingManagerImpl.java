@@ -43,9 +43,11 @@ public class RedisCachingManagerImpl implements RedisCachingManager{
 		for(String observable:set)
 		{
 			Set<String> relatedStatements = observers.get(observable);
-			for(String statementId:relatedStatements)
-			{
-				JedisUtils.del(MyBatisRedisCache.mybatis_cache_prefix+statementId);
+			if(relatedStatements!=null){
+				for(String statementId:relatedStatements)
+				{
+					JedisUtils.del(MyBatisRedisCache.mybatis_cache_prefix+statementId);
+				}
 			}
 		}
 	}
