@@ -32,7 +32,8 @@
   </dependencies>
   <build>
     <finalName>boot-webservice-demo</finalName>
-    <plugin>
+    <plugins>
+   		 <plugin>
 	        <groupId>org.springframework.boot</groupId>
 	        <artifactId>spring-boot-maven-plugin</artifactId>
 	        <configuration>
@@ -64,10 +65,13 @@
 		        </execution>
 		    </executions>
 		    <configuration>
-		        <schemaDirectory>${project.basedir}/src/main/resources//schema</schemaDirectory>
 		        <outputDirectory>${project.basedir}/src/main/java</outputDirectory>
 		        <clearOutputDir>false</clearOutputDir>
+		        <sources>
+		        	<source>${project.basedir}/src/main/resources/countries.xsd</source>
+		        </sources>
 		    </configuration>
 		</plugin>
+	</plugins>
   </build>
 </project>
