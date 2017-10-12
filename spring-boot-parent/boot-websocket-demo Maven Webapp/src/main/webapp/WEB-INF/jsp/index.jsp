@@ -162,8 +162,5 @@
     </div>
 </div>
 
-<a href="echoendpoint.jsp">echoendpoint test</a>
-<a href="websocket2.jsp">echoendpoint test</a>
-
 </body>
 </html>
