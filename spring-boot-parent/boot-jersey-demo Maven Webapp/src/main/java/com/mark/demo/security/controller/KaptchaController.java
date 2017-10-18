@@ -16,7 +16,7 @@ import com.google.code.kaptcha.Producer;
 import com.mark.demo.security.session.RedisSessionManager;
 
 
-@Path("/test")
+@Path("/rest")
 public class KaptchaController
 {
     private static final Integer timeOut = 300;      // 五分钟

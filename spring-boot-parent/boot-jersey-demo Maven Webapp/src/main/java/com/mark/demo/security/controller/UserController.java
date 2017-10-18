@@ -13,7 +13,7 @@ import com.mark.demo.security.service.UserService;
 *2017年9月8日
 *
 */
-@Path("/user")
+@Path("/rest/user")
 public class UserController {
 	@Autowired
 	private UserService userService;

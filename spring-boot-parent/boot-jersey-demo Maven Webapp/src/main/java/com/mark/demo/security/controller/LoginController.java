@@ -19,7 +19,7 @@ import com.mark.demo.security.base.GenericController;
 import com.mark.demo.security.session.RedisSessionManager;
 
 
-@Path("/common")
+@Path("/rest/common")
 public class LoginController extends GenericController
 {
     private static Logger       logger = LoggerFactory.getLogger(LoginController.class);

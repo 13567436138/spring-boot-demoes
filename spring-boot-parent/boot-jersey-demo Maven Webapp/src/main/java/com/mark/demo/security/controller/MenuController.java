@@ -21,7 +21,7 @@ import com.mark.demo.security.service.MenuService;
 *2017年9月7日
 *
 */
-@Path("/menu")
+@Path("/rest/menu")
 public class MenuController {
 	
 	@Autowired

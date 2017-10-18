@@ -3,6 +3,8 @@ package com.mark.demo.security.config;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.ServletException;
+
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.mvc.freemarker.FreemarkerMvcFeature;
 import org.glassfish.jersey.servlet.ServletContainer;
@@ -27,12 +29,13 @@ public class MyJerseryConfig extends ResourceConfig{
         pro.put("jersey.config.server.mvc.templateBasePath.freemarker", "WEB-INF/ftl");
 
         addProperties(pro).register(FreemarkerMvcFeature.class);
-      
+        
 	}
 	
-	@Bean
-    public ServletRegistrationBean jerseyServlet() {
-      ServletRegistrationBean registration = new ServletRegistrationBean(new ServletContainer(), "/*");
+	@Bean("servletContainer")
+    public ServletRegistrationBean jerseyServlet() throws ServletException {
+	   ServletContainer servlet=new ServletContainer(this);
+       ServletRegistrationBean registration = new ServletRegistrationBean(servlet, "/rest/*");
        registration.addInitParameter(ServletProperties.JAXRS_APPLICATION_CLASS, MyJerseryConfig.class.getName());
        registration.addInitParameter("jersey.config.server.mvc.templateBasePath.freemarker", "WEB-INF/ftl");
        return registration;

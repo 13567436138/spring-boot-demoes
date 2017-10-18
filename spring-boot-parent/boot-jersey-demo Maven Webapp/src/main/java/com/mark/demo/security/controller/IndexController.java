@@ -10,7 +10,7 @@ import javax.ws.rs.core.MediaType;
 *2017年9月7日
 *
 */
-@Path("/admins/indexes")
+@Path("/rest/admins/indexes")
 public class IndexController {
 	
 	@GET  

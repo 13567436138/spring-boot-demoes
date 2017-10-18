@@ -54,23 +54,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	        .authorizeRequests().accessDecisionManager(customAccessDecisionManager)  
 	        .antMatchers("/js/**").permitAll()
 	        .antMatchers("/css/**").permitAll()
-	        .antMatchers("/common/login**").permitAll()
-	        .antMatchers("/captcha**").permitAll()
+	        .antMatchers("/rest/common/login**").permitAll()
+	        .antMatchers("/rest/captcha**").permitAll()
 	        .anyRequest().authenticated() 
-	        .antMatchers("/admins/**").hasAuthority("ROLE_ADMIN")
+	        .antMatchers("/rest/admins/**").hasAuthority("ROLE_ADMIN")
 	        .and()  
 	        .formLogin()  
-	        .loginPage("/common/login")
+	        .loginPage("/rest/common/login")
 	        .usernameParameter("userName").passwordParameter("password")  
-	        .loginProcessingUrl("/common/login/submitlogin")
-	        .successForwardUrl("/admins/indexes/index")
-	        .failureForwardUrl("/common/login?error=true")
+	        .loginProcessingUrl("/rest/common/login/submitlogin")
+	        .successForwardUrl("/rest/admins/indexes/index")
+	        .failureForwardUrl("/rest/common/login?error=true")
 	        .permitAll()  
 	        .successHandler(customSavedRequestAwareAuthenticationSuccessHandler)
 	        .and()
 	        .csrf().disable() 
 	        .logout()  
-	        .logoutSuccessUrl("/logout")
+	        .logoutSuccessUrl("/rest/logout")
 	        .logoutSuccessHandler(customLogoutSuccessHandler)
 	        .permitAll()  
 	        .invalidateHttpSession(true)  
@@ -78,9 +78,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	        .rememberMe()
 	        .tokenValiditySeconds(1209600)
 	        .and().sessionManagement()
-	        .invalidSessionUrl("/common/login")
+	        .invalidSessionUrl("/rest/common/login")
 	        .maximumSessions(1)
-	        .expiredUrl("/common/login?expire=true"); 
+	        .expiredUrl("/rest/common/login?expire=true"); 
 	}
 	
 	@Bean
@@ -89,7 +89,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		filter.setUserMapper(userMapper);
 		filter.setRedisSessionManager(redisSessionManager);
 		filter.setAuthenticationManager(authenticationManager());
-		filter.setFilterProcessesUrl("/common/login/submitlogin");
+		filter.setFilterProcessesUrl("/rest/common/login/submitlogin");
 		filter.setAuthenticationSuccessHandler(customSavedRequestAwareAuthenticationSuccessHandler);
 		filter.setAuthenticationFailureHandler(simpleUrlAuthenticationFailureHandler());
 		return filter;
@@ -99,7 +99,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Bean
 	public SimpleUrlAuthenticationFailureHandler simpleUrlAuthenticationFailureHandler(){
 		SimpleUrlAuthenticationFailureHandler handler=new SimpleUrlAuthenticationFailureHandler();
-		handler.setDefaultFailureUrl("/common/login?error=code");
+		handler.setDefaultFailureUrl("/rest/common/login?error=code");
 		return handler;
 	}
 	

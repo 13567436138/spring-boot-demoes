@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mark.demo.security.mapper.UserMapper">
+	<cache eviction="LRU" type="com.mark.demo.security.mybatis.cache.MyBatisRedisCache" ></cache>
+    <resultMap type="User" id="userMap">
+    	<result column="userId" property="id" />
+    	<result column="userName" property="userName" />
+    	<result column="password" property="password" />
+    	<result column="age" property="age" />
+    	<result column="sex" property="sex" />
+    	<result column="phone" property="phone" />
+    </resultMap>
+    <resultMap type="User" id="userWithRoleMap" extends="userMap">
+    	<collection property="roleList" ofType="Role">
+    		<result column="roleId" jdbcType="INTEGER" property="id"/>
+    		<result column="roleName" jdbcType="VARCHAR" property="roleName"/>
+    		<result column="roleDesc" jdbcType="VARCHAR" property="roleDesc"/>
+    	</collection>
+    </resultMap>
+    
+    <select id="getUserByUserName" parameterType="String" resultMap="userWithRoleMap" useCache="false">
+    	select u.*,r.* from user u left join user_role ur on u.userId=ur.userId
+    	left join role r on ur.roleId= r.roleId
+    	 where userName=#{userName}
+    </select>
+    
+    
+</mapper>
+
