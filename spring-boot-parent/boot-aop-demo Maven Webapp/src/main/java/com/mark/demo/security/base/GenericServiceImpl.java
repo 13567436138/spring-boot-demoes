@@ -2,9 +2,7 @@ package com.mark.demo.security.base;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.mark.demo.security.entity.Resource;
+import com.mark.demo.security.anno.pointCutAnno;
 
 
 public abstract class GenericServiceImpl<T extends GenericEntity> implements GenericService <T> {
@@ -71,7 +69,7 @@ public abstract class GenericServiceImpl<T extends GenericEntity> implements Gen
         pageResult.setTotal(page.getTotalCount());
         return pageResult;
     }
-    
+    @pointCutAnno
     public List<T> findAll() {
 		return dao.selectAll();
 	}

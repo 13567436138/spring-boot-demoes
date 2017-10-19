@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mark.demo.security.anno.pointCutAnno;
 import com.mark.demo.security.base.GenericServiceImpl;
 import com.mark.demo.security.entity.Menu;
 import com.mark.demo.security.entity.User;
@@ -27,7 +28,7 @@ public class UserServiceImpl extends GenericServiceImpl<User> implements UserSer
 		this.userMapper=userMapper;
 	}
 
-	@Override
+	@pointCutAnno
 	public List<User> findAll() {
 		return userMapper.selectAll();
 	}

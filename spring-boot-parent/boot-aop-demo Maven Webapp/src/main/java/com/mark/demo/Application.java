@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 import com.mark.demo.security.anno.MyBatisDao;
 
@@ -19,6 +20,7 @@ import com.mark.demo.security.anno.MyBatisDao;
 @ComponentScan
 @ServletComponentScan
 @MapperScan(value="com.mark.demo.security.mapper",annotationClass=MyBatisDao.class)
+@EnableAspectJAutoProxy(proxyTargetClass=true)
 public class Application {
 
 	public static void main(String[] args) {

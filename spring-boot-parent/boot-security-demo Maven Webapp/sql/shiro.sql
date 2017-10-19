@@ -119,7 +119,8 @@ CREATE TABLE `user_role` (
   `roleId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---Remember Me持久化保存记录
+drop table if exists PERSISTENT_LOGINS;
+
 create table PERSISTENT_LOGINS
 (
   username  VARCHAR(64) not null,

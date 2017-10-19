@@ -1,5 +1,6 @@
 package com.mark.demo.security.service;
 
+import com.mark.demo.security.anno.MyBatisDao;
 import com.mark.demo.security.base.GenericService;
 import com.mark.demo.security.entity.Resource;
 
